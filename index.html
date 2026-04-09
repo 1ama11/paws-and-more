@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws &amp; More 🐾 — Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero--home { padding: 100px var(--space-xl) 80px; }
+    .hero--home h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); }
+    @media (max-width: 768px) { .hero--home { padding: var(--space-xl) var(--space-md); } }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Paws &amp; More 🐾</a>
+    <nav class="main-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;">
+
+
+  <!-- 🔐 Auth buttons -->
+  <a href="login.html" class="btn btn--sm">Login</a>
+  <a href="signup.html" class="btn btn--sm">Sign Up</a>
+
+  <!-- 🛒 Cart -->
+  <a href="shop.html" class="nav-cart">🛒</a>
+
+  <!-- ☰ Mobile menu -->
+  <button class="nav-toggle">☰</button>
+
+</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero hero--home">
+    <div class="hero-inner">
+      <span class="hero-tag">Welcome to Paws &amp; More 🐾</span>
+      <h1>Your Pet's<br>Happy Place 🐕🐈</h1>
+      <p>Premium products for cats &amp; dogs, plus a loving adoption centre — everything your furry family needs, all in one place.</p>
+      <div class="hero-buttons">
+        <a href="shop.html" class="btn btn--primary">Shop Now</a>
+        <a href="adoption.html" class="btn btn--outline">Adopt a Pet</a>
+      </div>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">🐾</div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section section--primary">
+    <div class="section-header">
+      <h2>Why Choose Us?</h2>
+      <p>We put your pet first, always</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="why-icon">🚚</span>
+        <h4>Free Shipping</h4>
+        <p>On all orders over $40 — delivered fast to your door.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🌿</span>
+        <h4>Natural Products</h4>
+        <p>Vet-approved, clean ingredients with no nasty additives.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🏅</span>
+        <h4>Expert Curated</h4>
+        <p>Every product hand-picked by our in-house pet specialists.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">💛</span>
+        <h4>Happy Pet Guarantee</h4>
+        <p>14-day hassle-free returns — no questions asked.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section section--light">
+    <div class="section-header">
+      <h2>What We Offer</h2>
+      <p>Everything cats and dogs need — and a chance to adopt one</p>
+    </div>
+    <div class="card-container">
+      <div class="card card--category">
+        <span class="card-icon">🐈</span>
+        <h3>Cat Products</h3>
+        <p>Food, toys, beds &amp; accessories for your feline friend</p>
+        <a href="shop.html?filter=cat" class="btn btn--sm">Browse Cats</a>
+      </div>
+      <div class="card card--category">
+        <span class="card-icon">🐕</span>
+        <h3>Dog Products</h3>
+        <p>Food, toys, leads &amp; accessories for your pup</p>
+        <a href="shop.html?filter=dog" class="btn btn--sm">Browse Dogs</a>
+      </div>
+      <div class="card card--category">
+        <span class="card-icon">🏠</span>
+        <h3>Adopt a Pet</h3>
+        <p>Give a loving cat or dog their forever home</p>
+        <a href="adoption.html" class="btn btn--sm">See Pets</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section section--cream">
+    <div class="section-header">
+      <h2>Customer Favourites ⭐</h2>
+      <p>Our best-selling products this month</p>
+    </div>
+    <div class="card-container">
+      <div class="card card--product">
+        <div class="card-img-wrap">
+          <img src="https://placedog.net/400/260?r=4" alt="Premium dog food">
+          <span class="badge badge--dog">Dog</span>
+        </div>
+        <div class="card-body">
+          <h3>Premium Dog Food</h3>
+          <p>Grain-free, vet-recommended formula for all breeds</p>
+          <div class="card-footer">
+            <span class="price">$24.99</span>
+            <a href="shop.html" class="btn btn--sm">View in Shop</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card--product">
+        <div class="card-img-wrap">
+          <img src="https://placedog.net/400/260?r=5" alt="Cat tree">
+          <span class="badge badge--cat">Cat</span>
+        </div>
+        <div class="card-body">
+          <h3>Deluxe Cat Tree</h3>
+          <p>Multi-level climbing &amp; scratching tower for cats</p>
+          <div class="card-footer">
+            <span class="price">$59.99</span>
+            <a href="shop.html" class="btn btn--sm">View in Shop</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card--product">
+        <div class="card-img-wrap">
+          <img src="https://placedog.net/400/260?r=6" alt="Cozy pet bed">
+          <span class="badge badge--new">New</span>
+        </div>
+        <div class="card-body">
+          <h3>Cozy Pet Bed</h3>
+          <p>Ultra-soft orthopaedic comfort for cats &amp; dogs</p>
+          <div class="card-footer">
+            <span class="price">$34.99</span>
+            <a href="shop.html" class="btn btn--sm">View in Shop</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section--light">
+    <div class="section-header">
+      <h2>Happy Pet Parents 💬</h2>
+      <p>What our customers are saying</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My dog Max loves the premium food. His coat has never looked better and he's so much more energetic!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🐕</div>
+          <div>
+            <div class="testimonial-name">Sarah M.</div>
+            <div class="testimonial-pet">Owner of Max, Golden Retriever</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Fast delivery and the cat tree is amazing! Luna spends all day on it — best purchase I've made."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🐈</div>
+          <div>
+            <div class="testimonial-name">James K.</div>
+            <div class="testimonial-pet">Owner of Luna, Tabby Cat</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"We adopted our beagle Biscuit through Paws &amp; More — the whole process was smooth and the team was so helpful."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🐶</div>
+          <div>
+            <div class="testimonial-name">Amira H.</div>
+            <div class="testimonial-pet">Owner of Biscuit, Beagle</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADOPTION BANNER -->
+  <section class="section section--dark adoption-banner">
+    <div class="adoption-banner-inner">
+      <h2>Give a Pet a Forever Home 🐾</h2>
+      <p>Dozens of loving cats and dogs are waiting to meet their perfect family. Browse our adoption listings and change a life today.</p>
+      <div class="hero-buttons">
+        <a href="adoption.html" class="btn btn--primary">See Available Pets</a>
+        <a href="adoption.html" class="btn btn--outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section section--green newsletter">
+    <h2>Stay in the Loop 📬</h2>
+    <p>Get exclusive deals, pet care tips, and new arrivals straight to your inbox.</p>
+    <div class="newsletter-form">
+      <input type="email" id="nl-email" placeholder="Your email address…" aria-label="Email address">
+      <button class="btn btn--primary" id="nl-btn" type="button">Subscribe</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Paws &amp; More 🐾</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <p class="footer-copy">© 2019 Paws &amp; More. All rights reserved.</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>

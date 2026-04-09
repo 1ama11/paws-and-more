@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws &amp; More 🐾 — Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Paws &amp; More 🐾</a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+<div style="display:flex;align-items:center;gap:10px;">
+
+  <!-- 🔐 Auth buttons -->
+  <a href="login.html" class="btn btn--sm">Login</a>
+  <a href="signup.html" class="btn btn--sm">Sign Up</a>
+
+  <!-- 🛒 Cart -->
+  <a href="shop.html" class="nav-cart">🛒</a>
+
+  <!-- ☰ Mobile menu -->
+  <button class="nav-toggle">☰</button>
+
+</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Our Shop</span>
+      <h1>Products Your<br>Pet Will Love 💛</h1>
+      <p>Carefully selected food, toys &amp; accessories for cats and dogs</p>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">🛍️</div>
+  </section>
+
+  <!-- SHOP SECTION -->
+  <section class="section section--light">
+    <div class="section-header">
+      <h2>All Products</h2>
+      <p>Filter by your pet type</p>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">🐾 All</button>
+      <button class="filter-btn" data-filter="cat">🐈 Cats</button>
+      <button class="filter-btn" data-filter="dog">🐕 Dogs</button>
+      <button class="filter-btn" data-filter="both">🐈🐕 Both</button>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="card-container" id="product-grid"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Paws &amp; More 🐾</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <p class="footer-copy">© 2019 Paws &amp; More. All rights reserved.</p>
+  </footer>
+
+  <!-- CART OVERLAY + DRAWER -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h3>🛒 Your Cart</h3>
+      <button class="cart-close" id="cart-close">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span class="cart-total-label">Total</span>
+        <span class="cart-total-price" id="cart-total">$0.00</span>
+      </div>
+      <button class="btn btn--primary btn--full" id="checkout-btn">Proceed to Checkout →</button>
+    </div>
+  </aside>
+
+  <!-- CHECKOUT MODAL -->
+  <div class="modal-overlay" id="checkout-overlay">
+    <div class="modal" id="checkout-modal">
+      <div class="modal-header">
+        <h3>📦 Checkout</h3>
+        <button class="cart-close" id="checkout-close">✕</button>
+      </div>
+      <div class="modal-body" id="checkout-body">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="co-name" placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="co-email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="co-phone" placeholder="+1 234 567 8901">
+        </div>
+        <div class="form-group">
+          <label>Delivery Address</label>
+          <textarea id="co-address" placeholder="Street, City, Postcode"></textarea>
+        </div>
+        <hr style="border:none;border-top:1px solid var(--border);margin:var(--space-md) 0;">
+        <div class="form-group">
+          <label>Card Number</label>
+          <input type="text" id="co-card" placeholder="1234 5678 9012 3456" maxlength="19">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Expiry</label>
+            <input type="text" id="co-exp" placeholder="MM/YY" maxlength="5">
+          </div>
+          <div class="form-group">
+            <label>CVV</label>
+            <input type="text" id="co-cvv" placeholder="123" maxlength="3">
+          </div>
+        </div>
+        <div id="checkout-order-summary" style="background:var(--body-bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-md);margin-top:var(--space-sm);">
+          <strong style="font-family:var(--font-display);font-size:0.95rem;">Order Summary</strong>
+          <div id="order-summary-lines" style="margin-top:var(--space-sm);font-size:0.88rem;color:var(--text-secondary);"></div>
+          <div style="display:flex;justify-content:space-between;margin-top:var(--space-sm);font-weight:700;font-family:var(--font-display);">
+            <span>Total</span><span id="order-total-display" style="color:var(--accent);"></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn--ghost" id="checkout-cancel">Cancel</button>
+        <button class="btn btn--primary" id="place-order-btn">Place Order 🎉</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div class="modal-overlay" id="success-overlay">
+    <div class="modal">
+      <div class="modal-header"><h3>Order Placed!</h3></div>
+      <div class="modal-body">
+        <div class="success-box">
+          <span class="success-icon">🎉</span>
+          <h3>Thank you for your order!</h3>
+          <p>We've received your order and will send a confirmation to your email. Your furry friend is going to love it! 🐾</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="index.html" class="btn btn--primary">Back to Home</a>
+        <button class="btn btn--ghost" id="success-close">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ─── PRODUCT DATA ─── */
+    const products = [
+      { id:1, name:'Premium Dog Food',      desc:'Grain-free, vet-recommended formula for all dog breeds', price:24.99, emoji:'🥩', pet:'dog',  badge:'dog',  badgeLabel:'Dog' },
+      { id:2, name:'Dog Chew Toy',           desc:'Durable rubber toy for hours of fun and dental health',  price:9.99,  emoji:'🦴', pet:'dog',  badge:'sale', badgeLabel:'Sale' },
+      { id:3, name:'Dog Training Treats',    desc:'Bite-sized rewards for positive reinforcement training',  price:14.99, emoji:'🍖', pet:'dog',  badge:'dog',  badgeLabel:'Dog' },
+      { id:4, name:'Dog Collar & Lead Set',  desc:'Adjustable collar and lead set for walks and training',   price:19.99, emoji:'🦮', pet:'dog',  badge:'new',  badgeLabel:'New' },
+      { id:5, name:'Premium Cat Food',       desc:'High-protein wet food made with real fish and chicken',   price:21.99, emoji:'🐟', pet:'cat',  badge:'cat',  badgeLabel:'Cat' },
+      { id:6, name:'Deluxe Cat Tree',        desc:'Multi-level climbing and scratching tower for cats',      price:59.99, emoji:'🌳', pet:'cat',  badge:'cat',  badgeLabel:'Cat' },
+      { id:7, name:'Feather Wand Toy',       desc:'Interactive feather wand for playtime and exercise',      price:7.99,  emoji:'🪶', pet:'cat',  badge:'sale', badgeLabel:'Sale' },
+      { id:8, name:'Cat Litter (10kg)',      desc:'Odour-neutralising clumping litter for easy cleaning',    price:17.99, emoji:'🪣', pet:'cat',  badge:'cat',  badgeLabel:'Cat' },
+      { id:9, name:'Cozy Pet Bed',           desc:'Ultra-soft orthopaedic comfort bed for cats and dogs',    price:34.99, emoji:'🛏️', pet:'both', badge:'new',  badgeLabel:'New' },
+      { id:10,name:'Stainless Steel Bowls',  desc:'Set of 2 non-slip food and water bowls — fits all pets',  price:12.99, emoji:'🥣', pet:'both', badge:null,   badgeLabel:'' },
+      { id:11,name:'Pet Grooming Kit',       desc:'Complete brush, comb and nail clipper set for all pets',  price:22.99, emoji:'✂️', pet:'both', badge:'new',  badgeLabel:'New' },
+      { id:12,name:'Pet Carrier Bag',        desc:'Comfortable and ventilated travel carrier for vet trips', price:39.99, emoji:'👜', pet:'both', badge:null,   badgeLabel:'' },
+    ];
+
+    /* ─── BADGE CLASS MAP ─── */
+    const badgeClass = { dog:'badge--dog', cat:'badge--cat', new:'badge--new', sale:'badge--sale' };
+
+    /* ─── CART STATE ─── */
+    let cart = JSON.parse(localStorage.getItem('pawsCart') || '[]');
+
+    function saveCart() { localStorage.setItem('pawsCart', JSON.stringify(cart)); }
+
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      const existing = cart.find(i => i.id === id);
+      if (existing) { existing.qty++; } else { cart.push({ ...product, qty: 1 }); }
+      saveCart();
+      renderCart();
+      openCart();
+    }
+
+    function changeQty(id, delta) {
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+      saveCart();
+      renderCart();
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(i => i.id !== id);
+      saveCart();
+      renderCart();
+    }
+
+    function cartTotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
+    function cartCount() { return cart.reduce((s, i) => s + i.qty, 0); }
+
+    function updateBadge() {
+      const count = cartCount();
+      const badge = document.getElementById('nav-cart-count');
+      badge.textContent = count;
+      badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cart-items');
+      const totalEl   = document.getElementById('cart-total');
+      updateBadge();
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="cart-empty"><span class="cart-empty-icon">🛒</span><p>Your cart is empty.<br>Add some products to get started!</p></div>`;
+        totalEl.textContent = '$0.00';
+        return;
+      }
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <span class="cart-item-emoji">${item.emoji}</span>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+          </div>
+          <div class="cart-item-qty">
+            <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+            <span class="qty-num">${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty(${item.id}, +1)">+</button>
+          </div>
+          <button class="cart-remove" onclick="removeFromCart(${item.id})" title="Remove">🗑️</button>
+        </div>
+      `).join('');
+      totalEl.textContent = '$' + cartTotal().toFixed(2);
+    }
+
+    /* ─── CART DRAWER OPEN/CLOSE ─── */
+    function openCart() {
+      document.getElementById('cart-drawer').classList.add('open');
+      document.getElementById('cart-overlay').classList.add('open');
+    }
+    function closeCart() {
+      document.getElementById('cart-drawer').classList.remove('open');
+      document.getElementById('cart-overlay').classList.remove('open');
+    }
+    document.getElementById('cart-toggle-btn').addEventListener('click', () => {
+      document.getElementById('cart-drawer').classList.contains('open') ? closeCart() : openCart();
+    });
+    document.getElementById('cart-close').addEventListener('click', closeCart);
+    document.getElementById('cart-overlay').addEventListener('click', closeCart);
+
+    /* ─── CHECKOUT ─── */
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) return;
+      closeCart();
+      // populate order summary
+      document.getElementById('order-summary-lines').innerHTML = cart.map(i =>
+        `<div style="display:flex;justify-content:space-between;padding:2px 0;"><span>${i.emoji} ${i.name} x${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`
+      ).join('');
+      document.getElementById('order-total-display').textContent = '$' + cartTotal().toFixed(2);
+      document.getElementById('checkout-overlay').classList.add('open');
+    });
+
+    function closeCheckout() { document.getElementById('checkout-overlay').classList.remove('open'); }
+    document.getElementById('checkout-close').addEventListener('click', closeCheckout);
+    document.getElementById('checkout-cancel').addEventListener('click', closeCheckout);
+
+    // Card number formatting
+    document.getElementById('co-card').addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g,'').substring(0,16);
+      e.target.value = v.replace(/(.{4})/g,'$1 ').trim();
+    });
+    document.getElementById('co-exp').addEventListener('input', e => {
+      let v = e.target.value.replace(/\D/g,'').substring(0,4);
+      if (v.length >= 2) v = v.substring(0,2) + '/' + v.substring(2);
+      e.target.value = v;
+    });
+
+    document.getElementById('place-order-btn').addEventListener('click', () => {
+      const name    = document.getElementById('co-name').value.trim();
+      const email   = document.getElementById('co-email').value.trim();
+      const address = document.getElementById('co-address').value.trim();
+      const card    = document.getElementById('co-card').value.trim();
+      if (!name || !email || !address || card.length < 19) {
+        alert('Please fill in all fields correctly before placing your order.');
+        return;
+      }
+      // Clear cart and show success
+      cart = []; saveCart(); renderCart();
+      closeCheckout();
+      document.getElementById('success-overlay').classList.add('open');
+    });
+
+    document.getElementById('success-close').addEventListener('click', () => {
+      document.getElementById('success-overlay').classList.remove('open');
+    });
+
+    /* ─── RENDER PRODUCTS ─── */
+    let activeFilter = 'all';
+
+    function renderProducts() {
+      const grid = document.getElementById('product-grid');
+      const filtered = activeFilter === 'all' ? products : products.filter(p => p.pet === activeFilter);
+      grid.innerHTML = filtered.map(p => `
+        <div class="card card--product" data-pet="${p.pet}">
+          <div class="card-img-wrap">
+            <div style="width:100%;height:200px;background:var(--section-bg);display:flex;align-items:center;justify-content:center;font-size:5rem;">${p.emoji}</div>
+            ${p.badge ? `<span class="badge ${badgeClass[p.badge]}">${p.badgeLabel}</span>` : ''}
+          </div>
+          <div class="card-body">
+            <h3>${p.name}</h3>
+            <p>${p.desc}</p>
+            <div class="card-footer">
+              <span class="price">$${p.price.toFixed(2)}</span>
+              <button class="btn btn--sm" onclick="addToCart(${p.id})">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ─── FILTER BUTTONS ─── */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        renderProducts();
+      });
+    });
+
+    // Read URL param ?filter=cat or ?filter=dog
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlFilter = urlParams.get('filter');
+    if (urlFilter && ['cat','dog','both'].includes(urlFilter)) {
+      activeFilter = urlFilter;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === urlFilter);
+      });
+    }
+
+    /* ─── MOBILE NAV ─── */
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('.main-nav').classList.toggle('open');
+    });
+
+    /* ─── INIT ─── */
+    renderProducts();
+    renderCart();
+
+    // Apply ?search= param from redirected search
+    const searchParam = new URLSearchParams(window.location.search).get('search');
+    if (searchParam) {
+      const si = document.getElementById('searchInput');
+      if (si) {
+        si.value = searchParam;
+        // filter the rendered cards
+        const query = searchParam.toLowerCase();
+        document.querySelectorAll('.card--product').forEach(card => {
+          card.style.display = card.innerText.toLowerCase().includes(query) ? '' : 'none';
+        });
+      }
+    }
+  </script>
+</body>
+</html>
