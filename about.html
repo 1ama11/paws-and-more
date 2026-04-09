@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws &amp; More 🐾 — About Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── ABOUT-ONLY STYLES ── */
+
+    .about-story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .about-story-text h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: var(--space-md);
+    }
+
+    .about-story-text p {
+      color: var(--text-secondary);
+      font-size: 0.97rem;
+      margin-bottom: var(--space-md);
+      line-height: 1.75;
+    }
+
+    .about-story-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--section-bg);
+      border-radius: var(--border-radius);
+      border: 2px solid var(--border);
+      aspect-ratio: 1;
+      max-width: 380px;
+      font-size: 10rem;
+      box-shadow: var(--shadow-md);
+      animation: fadeUp .6s ease both;
+    }
+
+    /* STAT CARDS */
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      flex: 1 1 180px;
+      max-width: 200px;
+      text-align: center;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg) var(--space-md);
+      box-shadow: var(--shadow-sm);
+      animation: fadeUp .5s ease both;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* TEAM CARDS */
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .team-card {
+      flex: 1 1 200px;
+      max-width: 230px;
+      text-align: center;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg) var(--space-md);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: fadeUp .5s ease both;
+    }
+
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: var(--section-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto var(--space-md);
+      border: 3px solid var(--border);
+    }
+
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .team-role {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .team-bio {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* VALUES */
+    .values-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .value-card {
+      flex: 1 1 200px;
+      max-width: 220px;
+      text-align: center;
+      animation: fadeUp .5s ease both;
+    }
+
+    .value-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin: 0 auto var(--space-md);
+    }
+
+    .value-card h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-on-dark);
+      margin-bottom: var(--space-xs);
+    }
+
+    .value-card p {
+      font-size: 0.84rem;
+      color: #c8c0a0;
+      line-height: 1.55;
+    }
+
+    /* STAGGER */
+    .stat-card:nth-child(1)  { animation-delay: .05s; }
+    .stat-card:nth-child(2)  { animation-delay: .12s; }
+    .stat-card:nth-child(3)  { animation-delay: .19s; }
+    .stat-card:nth-child(4)  { animation-delay: .26s; }
+    .team-card:nth-child(1)  { animation-delay: .05s; }
+    .team-card:nth-child(2)  { animation-delay: .13s; }
+    .team-card:nth-child(3)  { animation-delay: .21s; }
+    .team-card:nth-child(4)  { animation-delay: .29s; }
+    .value-card:nth-child(1) { animation-delay: .05s; }
+    .value-card:nth-child(2) { animation-delay: .13s; }
+    .value-card:nth-child(3) { animation-delay: .21s; }
+    .value-card:nth-child(4) { animation-delay: .29s; }
+
+    @media (max-width: 768px) {
+      .about-story { grid-template-columns: 1fr; text-align: center; }
+      .about-story-visual { margin: 0 auto; max-width: 260px; font-size: 7rem; }
+      .stat-card { flex-basis: calc(50% - var(--space-lg)); max-width: 180px; }
+      .team-card { flex-basis: calc(50% - var(--space-lg)); max-width: 220px; }
+    }
+
+    @media (max-width: 480px) {
+      .stat-card, .team-card { flex-basis: 100%; max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Paws &amp; More 🐾</a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+     <div style="display:flex;align-items:center;gap:10px;">
+  <!-- 🔐 Auth buttons -->
+  <a href="login.html" class="btn btn--sm">Login</a>
+  <a href="signup.html" class="btn btn--sm">Sign Up</a>
+
+  <!-- 🛒 Cart -->
+  <a href="shop.html" class="nav-cart">🛒</a>
+
+  <!-- ☰ Mobile menu -->
+  <button class="nav-toggle">☰</button>
+
+</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">About Us</span>
+      <h1>We're Pet Lovers,<br>Just Like You 🐾</h1>
+      <p>Paws &amp; More was built by pet owners who wanted better — better products, better care, and a better chance for every cat and dog to find a loving home.</p>
+      <div class="hero-buttons">
+        <a href="adoption.html" class="btn btn--primary">Adopt a Pet</a>
+        <a href="shop.html" class="btn btn--outline">Visit the Shop</a>
+      </div>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">💛</div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="section section--light">
+    <div class="about-story">
+      <div class="about-story-visual">🐈🐕</div>
+      <div class="about-story-text" style="animation: fadeUp .7s ease both;">
+        <h2>Our Story</h2>
+        <p>Paws &amp; More started in 2019 when our founder, Sara, struggled to find quality, affordable products for her two cats and rescue dog — all in one place. Every pet store was either too expensive, too limited, or had no adoption options at all.</p>
+        <p>So she built what she wished existed. A cosy, trustworthy place where pet owners could shop for everything their cats and dogs need, and where animals in need could find new families.</p>
+        <p>Today, Paws &amp; More has helped over 800 animals find loving homes and serves thousands of pet owners every month. We're proud of every tail wag and every purr that followed.</p>
+        <a href="adoption.html" class="btn btn--primary">See Our Available Pets →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section section--primary">
+    <div class="section-header">
+      <h2>Paws &amp; More by the Numbers</h2>
+      <p>Small beginnings, big impact</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">800+</div>
+        <div class="stat-label">Pets Successfully Adopted</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">5,000+</div>
+        <div class="stat-label">Happy Pet Owners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">120+</div>
+        <div class="stat-label">Products Available</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4.9★</div>
+        <div class="stat-label">Average Customer Rating</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR VALUES -->
+  <section class="section section--dark">
+    <div class="section-header section-header--light">
+      <h2>What We Stand For</h2>
+      <p>The values that guide every decision we make</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">❤️</div>
+        <h4>Animal Welfare First</h4>
+        <p>Every product we sell and every pet we list for adoption meets our strict welfare standards.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌿</div>
+        <h4>Natural & Safe</h4>
+        <p>We only stock vet-approved, natural products. No harmful chemicals, ever.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h4>Community Care</h4>
+        <p>10% of every adoption fee goes directly to local animal shelters and rescue organisations.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔍</div>
+        <h4>Full Transparency</h4>
+        <p>We're open about where our products come from and how our adoption process works.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE TEAM -->
+  <section class="section section--cream">
+    <div class="section-header">
+      <h2>Meet the Team 👋</h2>
+      <p>The people behind Paws &amp; More — all proud pet owners</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👩</div>
+        <div class="team-name">Sara El-Amin</div>
+        <div class="team-role">Founder & CEO</div>
+        <p class="team-bio">Cat mum of two and rescue dog owner. Sara started Paws &amp; More to make pet care simpler and adoption more accessible.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨</div>
+        <div class="team-name">Karim Youssef</div>
+        <div class="team-role">Head of Adoption</div>
+        <p class="team-bio">Karim coordinates all our adoptions and works closely with shelters. He has fostered over 30 cats and dogs over the years.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩‍🦱</div>
+        <div class="team-name">Lena Hoffmann</div>
+        <div class="team-role">Vet Consultant</div>
+        <p class="team-bio">Lena reviews every product we stock and ensures all our animals are healthy, vaccinated, and ready for their forever homes.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">🧑</div>
+        <div class="team-name">Omar Saleh</div>
+        <div class="team-role">Customer Experience</div>
+        <p class="team-bio">Omar makes sure every customer — human and furry — gets the best experience. Dog dad to a very energetic Labrador named Hazel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="section section--dark adoption-banner">
+    <div class="adoption-banner-inner">
+      <h2>Ready to Make a Difference? 🐾</h2>
+      <p>Whether you're shopping for your pet or looking to welcome a new one, Paws &amp; More is here for every step of the journey.</p>
+      <div class="hero-buttons">
+        <a href="adoption.html" class="btn btn--primary">Adopt a Pet</a>
+        <a href="shop.html" class="btn btn--outline">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Paws &amp; More 🐾</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <p class="footer-copy">© 2019 Paws &amp; More. All rights reserved.</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
