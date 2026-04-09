@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Ahmed Moheb",
+      "email": "ahmed@example.com",
+      "phone": "01012345678",
+      "address": "New Cairo, Egypt",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "name": "Yehia Hazem",
+      "email": "yehia@example.com",
+      "phone": "01098765432",
+      "address": "Nasr City, Egypt",
+      "password": "abcdef"
+    },
+    {
+        "id": 3,
+        "name": "Hana Sherif",
+        "email": "hana@example.com",
+        "phone": "01055555555",
+        "address": "Garden City, Egypt",
+        "password": "abcd1"
+    },
+    {
+        "id": 4,
+        "name": "Ali Ashraf",
+        "email": "ali@example.com",
+        "phone": "01011111111",
+        "address": "sherouk, Egypt",
+        "password": "mnopqr"
+    }
+  ]
+}
