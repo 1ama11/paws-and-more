@@ -1,0 +1,10 @@
+{
+  "Max": { "breed": "Golden Retriever", "age": "2 Years", "desc": "Max is energetic and loves kids." },
+  "Luna": { "breed": "Persian Cat", "age": "1 Year", "desc": "Luna is a calm lap cat." },
+  "Thumper": { "breed": "Lop Rabbit", "age": "6 Months", "desc": "Thumper loves fresh greens." },
+  "Buddy": { "breed": "Beagle", "age": "3 Years", "desc": "Buddy is a loyal, friendly hound." },
+  "Oliver": { "breed": "Tabby Cat", "age": "2 Years", "desc": "Oliver is very curious and playful." },
+  "Sky": { "breed": "Parakeet", "age": "1 Year", "desc": "Sky enjoys singing in the sun." },
+  "Daisy": { "breed": "Poodle", "age": "4 Years", "desc": "Daisy is smart and well-trained." },
+  "Mittens": { "breed": "Siamese", "age": "3 Years", "desc": "Mittens is very affectionate." }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adoption Form - Paws and More</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><b>Adoption Application</b></h1>
+        <form id="adoptForm" class="adoption-form">
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" id="fName" required placeholder="Mark Jackson">
+            </div>
+
+            <div class="form-group">
+                <label>Email Address:</label>
+                <input type="email" id="Email" required placeholder="abc@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label>Home Type:</label>
+                <select id="homeType" required class="custom-select">
+                    <option value="" disabled selected>Select your home type</option>
+                    <option value="apartment">Apartment (no garden)</option>
+                    <option value="house-garden">House with garden</option>
+                    <option value="house-no-garden">House without Garden</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Do you have other pets at home?</label>
+                <div class="radio-options">
+                    <label class="radio-container">
+                        <input type="radio" name="otherPets" value="no" checked> No
+                    </label>
+                    <label class="radio-container">
+                        <input type="radio" name="otherPets" value="yes"> Yes
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Pet Name:</label>
+                <input type="text" id="pName" readonly>
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="msg" placeholder="Tell us why you want to adopt..."></textarea>
+            </div>
+
+            <button type="submit" class="btn">Submit Application</button>
+        </form>
+    </div>
+
+    <div id="successModal">
+        <div class="modal-box">
+            <h2>Application Received! 🐾</h2>
+            <p>Thank you! We will contact you soon.</p>
+            <br>
+            <button onclick="window.location.href='adoption-list.html'" class="btn">Back to Adoption List</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
