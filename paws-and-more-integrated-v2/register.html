@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paws & More | Register</title>
+  <link rel="stylesheet" href="users.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="navbar">
+      <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Paws <span>&</span> More</a></div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="adoption.html">Adoption</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="active">Register</a>
+        <a href="profile.html">Profile</a>
+        <a href="orders.html">Orders</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-title">
+      <h1>Register</h1>
+      <p>Create your account to start shopping and manage your personal information later from your profile page.</p>
+    </section>
+
+    <section class="card">
+      <form id="registerForm" class="grid-2">
+        <div class="form-group">
+          <label for="registerName">Full Name</label>
+          <input type="text" id="registerName" placeholder="Enter your full name" />
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email Address</label>
+          <input type="email" id="registerEmail" placeholder="Enter your email" />
+        </div>
+        <div class="form-group">
+          <label for="registerPhone">Phone Number</label>
+          <input type="tel" id="registerPhone" placeholder="Enter your phone number" />
+        </div>
+        <div class="form-group">
+          <label for="registerAddress">Address</label>
+          <input type="text" id="registerAddress" placeholder="Enter your address" />
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" placeholder="Create a password" />
+        </div>
+        <div class="form-group">
+          <label for="registerConfirmPassword">Confirm Password</label>
+          <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" />
+        </div>
+        <div>
+          <button class="btn" type="submit">Create Account</button>
+          <div id="registerMessage"></div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="users.js"></script>
+</body>
+</html>

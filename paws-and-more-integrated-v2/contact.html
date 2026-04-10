@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Paws & More 🐾</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Your CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      padding: var(--space-xl);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-form {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-md);
+      align-self: start;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 70%;
+      padding: 8px 12px;
+      margin-bottom: 4px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+      font-family: inherit;
+      font-size: 0.88rem;
+      transition: border-color 220ms ease;
+      outline: none;
+      display: block;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--accent);
+    }
+    /* spacing wrapper so each field + its error has bottom gap */
+    .contact-form .field-wrap {
+      margin-bottom: 14px;
+    }
+
+    .contact-form textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">Paws & More 🐾</a>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="adoption.html">Adoption</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="policy.html">Policy</a>
+  </nav>
+
+    <div style="display:flex;align-items:center;gap:10px;">
+
+  <!-- 🔐 Auth buttons -->
+  <a href="login.html" class="btn btn--sm">Login</a>
+  <a href="register.html" class="btn btn--sm">Sign Up</a>
+  <a href="profile.html" class="btn btn--sm">Profile</a>
+
+  <!-- 🛒 Cart -->
+  <a href="shop.html" class="nav-cart">🛒</a>
+
+  <!-- ☰ Mobile menu -->
+  <button class="nav-toggle">☰</button>
+
+</div>
+  </header>
+
+<!-- HERO -->
+<section class="hero" style="padding:80px var(--space-xl); text-align:center;">
+  <h1>Contact Us 📞</h1>
+  <p>We’d love to hear from you! Whether you have a question or want to adopt a pet.</p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-container">
+
+  <!-- INFO -->
+  <div class="contact-info">
+
+    <div class="contact-box">
+      <h3>📍 Address</h3>
+      <p>Cairo, Egypt</p>
+    </div>
+
+    <div class="contact-box">
+      <h3>📧 Email</h3>
+      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5c6c0c5c5dac7c1f5c5d4c2c6d4dbd1d8dac7d09bd6dad8">[email&#160;protected]</a></p>
+    </div>
+
+    <div class="contact-box">
+      <h3>📞 Phone</h3>
+      <p>+20 123 456 7890</p>
+    </div>
+
+    <div class="contact-box">
+      <h3>⏰ Working Hours</h3>
+      <p>Sun - Thu: 9AM - 6PM</p>
+    </div>
+
+  </div>
+
+  <!-- FORM -->
+  <div class="contact-form">
+    <h2>Send a Message 💬</h2>
+
+    <div class="field-wrap"><input type="text" id="contact-name" placeholder="Your Name"></div>
+    <div class="field-wrap"><input type="email" id="contact-email" placeholder="Your Email"></div>
+    <div class="field-wrap"><textarea id="contact-message" placeholder="Your Message"></textarea></div>
+
+    <button class="btn btn--primary" id="send-btn">Send Message</button>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Paws & More 🐾</p>
+  <nav class="footer-nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="adoption.html">Adoption</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="policy.html">Policy</a>
+  </nav>
+  <p class="footer-copy">© 2019 Paws & More. All rights reserved.</p>
+</footer>
+
+
+  <script src="main.js"></script>
+</body>
+</html>
