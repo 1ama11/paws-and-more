@@ -1,0 +1,221 @@
+/* style.css */
+
+:root {
+  --primary-color: #e2cc9e;
+  --primary-dark: #f0c196;
+  --primary-light: #b4ad6d;
+  --accent-color: #beb071;
+  --accent-light: #c9cabc;
+  --secondary-color: #beb692;
+  --dark-color: #070706;
+  --muted-text: #383836;
+  --light-color: #131111;
+  --body-bg: #f5f3ea;
+  --card-bg: #ffffff;
+  --section-bg: #f8f5e8;
+  --border-color: #d8cfb0;
+  --input-background: #ffffff;
+  --success-color: #38b000;
+  --error-color: #d90429;
+  --warning-color: #f77f00;
+}
+
+
+/* --- Basic Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--body-bg);
+    color: var(--dark-color);
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: var(--section-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--dark-color);
+}
+
+/* --- Adoption List Grid --- */
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.pet-card {
+    background-color: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--accent-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures buttons align at bottom */
+    transition: transform 0.3s ease;
+}
+
+.pet-card:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Image Fix for Adoption List --- */
+.pet-card img {
+    width: 100%;
+    height: 200px;      /* Fixed height for all images */
+    object-fit: cover;  /* Crops image to fit without stretching */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 2px solid var(--primary-light);
+}
+
+.pet-card h3 {
+    margin-bottom: 5px;
+}
+
+/* --- Pet Details Page (Text Only) --- */
+.pet-details-layout {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 1px solid var(--accent-color);
+}
+
+.pet-info h2 {
+    color: var(--primary-dark);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* --- Adoption Form Styles --- */
+.adoption-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group input, 
+.form-group textarea {
+    padding: 12px;
+    background-color: var(--input-background);
+    color: #090000; /* White text for contrast on dark input */
+    border: 1px solid var(--accent-light);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group input[readonly] {
+    background-color: #e4e3de; /* Slightly darker for read-only pet name */
+    color:#070706;
+    cursor: not-allowed;
+}
+
+/* --- Success Modal --- */
+#successModal {
+    display: none; /* Hidden until JS triggers it */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 450px;
+    border: 4px solid var(--success-color);
+}
+
+/* --- Buttons --- */
+.btn {
+    background-color: var(--primary-dark);
+    color: var(--dark-color);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.3s ease;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+/* Make the dropdown match your text inputs */
+.custom-select {
+    padding: 12px;
+    background-color: var(--input-background);
+    color: #090000;
+    border: 1px solid var(--accent-light);
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Style the Radio area to match the form spacing */
+.radio-options {
+    display: flex;
+    gap: 20px;
+    padding: 5px 0;
+}
+
+.radio-container {
+    cursor: pointer;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Make the radio circles match your primary theme color */
+input[type="radio"] {
+    accent-color: var(--primary-dark);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.adopt-topbar{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;background:#e2cc9e;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:24px}.adopt-brand a,.adopt-nav a{text-decoration:none;color:#2b2b2b;font-weight:700}.adopt-nav{display:flex;gap:16px;flex-wrap:wrap}.adopt-nav a:hover{text-decoration:underline}

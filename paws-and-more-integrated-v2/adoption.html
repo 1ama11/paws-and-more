@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws &amp; More 🐾 — Adoption</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Paws &amp; More 🐾</a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html" class="active">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+<div style="display:flex;align-items:center;gap:10px;">
+
+
+  <!-- 🔐 Auth buttons -->
+  <a href="login.html" class="btn btn--sm">Login</a>
+  <a href="register.html" class="btn btn--sm">Sign Up</a>
+  <a href="profile.html" class="btn btn--sm">Profile</a>
+
+  <!-- 🛒 Cart -->
+  <a href="shop.html" class="nav-cart">🛒</a>
+
+  <!-- ☰ Mobile menu -->
+  <button class="nav-toggle">☰</button>
+
+</div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Adoption Centre</span>
+      <h1>Find Your<br>Forever Friend 🐾</h1>
+      <p>Every cat and dog here is looking for a loving home. Could yours be the one?</p>
+      <div class="hero-buttons">
+        <a href="adoption-list.html" class="btn btn--primary">Meet the Pets</a>
+        <a href="#how-it-works" class="btn btn--outline">How It Works</a>
+      </div>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">🐾</div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--primary" id="how-it-works">
+    <div class="section-header">
+      <h2>How Adoption Works</h2>
+      <p>Simple steps to welcoming a new family member</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <span class="why-icon">🔍</span>
+        <h4>1. Browse Pets</h4>
+        <p>Explore our available cats and dogs and find the one that feels right.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">📝</span>
+        <h4>2. Submit a Request</h4>
+        <p>Fill out our adoption form for the pet you're interested in.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">📞</span>
+        <h4>3. We Contact You</h4>
+        <p>Our team reviews your request and gets in touch within 48 hours.</p>
+      </div>
+      <div class="why-item">
+        <span class="why-icon">🏠</span>
+        <h4>4. Welcome Home!</h4>
+        <p>After approval, your new pet comes home with you!</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- PET LISTINGS -->
+  <section class="section section--light" id="pets">
+    <div class="section-header">
+      <h2>Pets Available for Adoption</h2>
+      <p>Browse Yehia's adoption listings and open each pet's full details page.</p>
+    </div>
+
+    <div class="filter-bar">
+      <a class="filter-btn active" href="adoption-list.html">🐾 View Full Adoption List</a>
+      <a class="filter-btn" href="adoption-form.html">📝 Open Adoption Form</a>
+    </div>
+
+    <div class="card-container">
+      <article class="card card--pet">
+        <img src="golden retriever.jpg" alt="Max the Golden Retriever">
+        <div class="card-body">
+          <span class="card-category">Dog</span>
+          <h3>Max</h3>
+          <p>Golden Retriever</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Max">View Details</a>
+        </div>
+      </article>
+
+      <article class="card card--pet">
+        <img src="persian cat.jpg" alt="Luna the Persian Cat">
+        <div class="card-body">
+          <span class="card-category">Cat</span>
+          <h3>Luna</h3>
+          <p>Persian Cat</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Luna">View Details</a>
+        </div>
+      </article>
+
+      <article class="card card--pet">
+        <img src="holland lop.jpg" alt="Thumper the Holland Lop Rabbit">
+        <div class="card-body">
+          <span class="card-category">Small Pet</span>
+          <h3>Thumper</h3>
+          <p>Holland Lop Rabbit</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Thumper">View Details</a>
+        </div>
+      </article>
+
+      <article class="card card--pet">
+        <img src="beagle.jpg" alt="Buddy the Beagle">
+        <div class="card-body">
+          <span class="card-category">Dog</span>
+          <h3>Buddy</h3>
+          <p>Beagle</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Buddy">View Details</a>
+        </div>
+      </article>
+
+      <article class="card card--pet">
+        <img src="tabby cat.jpg" alt="Oliver the Tabby Cat">
+        <div class="card-body">
+          <span class="card-category">Cat</span>
+          <h3>Oliver</h3>
+          <p>Tabby Cat</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Oliver">View Details</a>
+        </div>
+      </article>
+
+      <article class="card card--pet">
+        <img src="siamese.jpg" alt="Cleo the Siamese Cat">
+        <div class="card-body">
+          <span class="card-category">Cat</span>
+          <h3>Cleo</h3>
+          <p>Siamese Cat</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Cleo">View Details</a>
+        </div>
+      </article>
+
+      <article class="card card--pet">
+        <img src="parakeet.jpg" alt="Kiwi the Parakeet">
+        <div class="card-body">
+          <span class="card-category">Bird</span>
+          <h3>Kiwi</h3>
+          <p>Parakeet</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Kiwi">View Details</a>
+        </div>
+      </article>
+
+      <article class="card card--pet">
+        <img src="poodle.jpg" alt="Bella the Poodle">
+        <div class="card-body">
+          <span class="card-category">Dog</span>
+          <h3>Bella</h3>
+          <p>Poodle</p>
+          <a class="btn btn--primary" href="pet-details.html?name=Bella">View Details</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Paws &amp; More 🐾</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <p class="footer-copy">© 2019 Paws &amp; More. All rights reserved.</p>
+  </footer>
+
+  <!-- ADOPTION REQUEST MODAL -->
+  <div class="modal-overlay" id="adopt-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="adopt-modal-title">🐾 Adoption Request</h3>
+        <button class="cart-close" id="adopt-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:var(--space-md);">Please fill in your details below. Our team will review your request and contact you within 48 hours.</p>
+
+        <div id="adopt-pet-summary" style="display:flex;align-items:center;gap:var(--space-md);background:var(--body-bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-md);margin-bottom:var(--space-md);"></div>
+
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="ad-name" placeholder="Your full name">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email Address *</label>
+            <input type="email" id="ad-email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="ad-phone" placeholder="+1 234 567 8901">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Home Type *</label>
+          <select id="ad-home">
+            <option value="">Select your home type</option>
+            <option>Apartment (no garden)</option>
+            <option>House with garden</option>
+            <option>House without garden</option>
+            <option>Farm / rural property</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Do you have other pets at home?</label>
+          <select id="ad-pets">
+            <option value="">Please select</option>
+            <option>No other pets</option>
+            <option>Yes, other cats</option>
+            <option>Yes, dogs</option>
+            <option>Yes, mixed pets</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Why do you want to adopt this pet? *</label>
+          <textarea id="ad-reason" placeholder="Tell us a little about yourself and why you'd be a great match…"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn--ghost" id="adopt-cancel">Cancel</button>
+        <button class="btn btn--primary" id="adopt-submit">Submit Request 🐾</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="adopt-success-overlay">
+    <div class="modal">
+      <div class="modal-header"><h3>Request Submitted!</h3></div>
+      <div class="modal-body">
+        <div class="success-box">
+          <span class="success-icon">🐾</span>
+          <h3>We've received your request!</h3>
+          <p>Thank you for wanting to give a pet a forever home. Our team will review your application and contact you within 48 hours. 💛</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="index.html" class="btn btn--primary">Back to Home</a>
+        <button class="btn btn--ghost" id="adopt-success-close">See More Pets</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ─── PET DATA ─── */
+    const pets = [
+      { id:1,  name:'Luna',    species:'cat', breed:'Tabby',           age:'2 years',  gender:'Female', emoji:'🐈',  desc:'Luna is a gentle and curious tabby who loves sunny spots and gentle cuddles. She gets along well with calm households.' },
+      { id:2,  name:'Mochi',   species:'cat', breed:'Persian',         age:'3 years',  gender:'Female', emoji:'😺',  desc:'Mochi is a fluffy Persian who loves being groomed and spending lazy afternoons on soft blankets.' },
+      { id:3,  name:'Shadow',  species:'cat', breed:'Black Shorthair', age:'1 year',   gender:'Male',   emoji:'🖤',  desc:'Shadow is a playful and mischievous young cat who loves chasing toys and exploring every corner of the house.' },
+      { id:4,  name:'Cleo',    species:'cat', breed:'Siamese',         age:'4 years',  gender:'Female', emoji:'😸',  desc:'Cleo is a chatty Siamese who will follow you everywhere and loves being the centre of attention.' },
+      { id:5,  name:'Biscuit', species:'dog', breed:'Beagle',          age:'2 years',  gender:'Male',   emoji:'🐶',  desc:'Biscuit is an energetic Beagle who loves outdoor adventures, long walks and playing fetch in the garden.' },
+      { id:6,  name:'Daisy',   species:'dog', breed:'Labrador',        age:'3 years',  gender:'Female', emoji:'🐕',  desc:'Daisy is a friendly Labrador who is brilliant with children and loves swimming and cuddles equally.' },
+      { id:7,  name:'Max',     species:'dog', breed:'German Shepherd',  age:'5 years',  gender:'Male',   emoji:'🦮',  desc:'Max is a loyal and intelligent German Shepherd looking for an active family who can keep up with him.' },
+      { id:8,  name:'Coco',    species:'dog', breed:'Poodle Mix',      age:'1 year',   gender:'Female', emoji:'🐩',  desc:'Coco is a bouncy, fluffy poodle mix who is hypoallergenic and absolutely loves everyone she meets.' },
+    ];
+
+    let selectedPet = null;
+
+    function renderPets(filter = 'all') {
+      const grid = document.getElementById('pet-grid');
+      const filtered = filter === 'all' ? pets : pets.filter(p => p.species === filter);
+      grid.innerHTML = filtered.map(p => `
+        <div class="card card--pet">
+          <div class="pet-img-wrap">
+            <div style="width:100%;height:220px;background:var(--section-bg);display:flex;align-items:center;justify-content:center;font-size:7rem;">${p.emoji}</div>
+            <span class="pet-species-tag ${p.species}">${p.species === 'cat' ? '🐈 Cat' : '🐕 Dog'}</span>
+          </div>
+          <div class="pet-body">
+            <h3>${p.name}</h3>
+            <div class="pet-meta">
+              <span>${p.breed}</span>
+              <span>${p.age}</span>
+              <span>${p.gender}</span>
+            </div>
+            <p class="pet-desc">${p.desc}</p>
+            <button class="btn btn--primary btn--full" onclick="openAdoptModal(${p.id})">Adopt ${p.name} 🐾</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ─── FILTER ─── */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPets(btn.dataset.filter);
+      });
+    });
+
+    /* ─── ADOPT MODAL ─── */
+    function openAdoptModal(id) {
+      selectedPet = pets.find(p => p.id === id);
+      document.getElementById('adopt-modal-title').textContent = `🐾 Adopt ${selectedPet.name}`;
+      document.getElementById('adopt-pet-summary').innerHTML = `
+        <span style="font-size:3.5rem;">${selectedPet.emoji}</span>
+        <div>
+          <div style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--text-primary);">${selectedPet.name}</div>
+          <div style="font-size:0.85rem;color:var(--text-secondary);">${selectedPet.breed} · ${selectedPet.age} · ${selectedPet.gender}</div>
+        </div>
+      `;
+      // Clear form
+      ['ad-name','ad-email','ad-phone','ad-home','ad-pets','ad-reason'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      document.getElementById('adopt-overlay').classList.add('open');
+    }
+
+    function closeAdoptModal() { document.getElementById('adopt-overlay').classList.remove('open'); }
+    document.getElementById('adopt-close').addEventListener('click', closeAdoptModal);
+    document.getElementById('adopt-cancel').addEventListener('click', closeAdoptModal);
+
+    document.getElementById('adopt-submit').addEventListener('click', () => {
+      const name   = document.getElementById('ad-name').value.trim();
+      const email  = document.getElementById('ad-email').value.trim();
+      const phone  = document.getElementById('ad-phone').value.trim();
+      const home   = document.getElementById('ad-home').value;
+      const reason = document.getElementById('ad-reason').value.trim();
+      if (!name || !email || !phone || !home || !reason) {
+        alert('Please fill in all required fields (*).');
+        return;
+      }
+      closeAdoptModal();
+      document.getElementById('adopt-success-overlay').classList.add('open');
+    });
+
+    document.getElementById('adopt-success-close').addEventListener('click', () => {
+      document.getElementById('adopt-success-overlay').classList.remove('open');
+    });
+
+    /* ─── MOBILE NAV ─── */
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('.main-nav').classList.toggle('open');
+    });
+
+    /* ─── CART BADGE ─── */
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('pawsCart') || '[]');
+      const total = cart.reduce((s, i) => s + i.qty, 0);
+      const badge = document.getElementById('nav-cart-count');
+      if (badge) { badge.textContent = total; badge.style.display = total > 0 ? 'flex' : 'none'; }
+    }
+    updateCartBadge();
+
+    /* ─── INIT ─── */
+    renderPets();
+  </script>
+</body>
+</html>
