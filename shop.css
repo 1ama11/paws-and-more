@@ -61,6 +61,7 @@ header {
   display: flex; align-items: center; justify-content: space-between;
   box-shadow: var(--shadow-sm); border-bottom: 2px solid var(--border);
 }
+
 header .logo {
   font-family: var(--font-display);
   font-size: 1.4rem;
@@ -70,11 +71,13 @@ header .logo {
   letter-spacing: -0.02em;
   cursor: pointer;
 }
+
 header nav {
   display: flex;
   gap: var(--space-xs);
   align-items: center;
 }
+
 header nav a,
 header nav button {
   color: var(--text-primary);
@@ -89,11 +92,13 @@ header nav button {
   text-decoration: none;
   font-family: var(--font-body);
 }
+
 header nav a:hover,
 header nav button:hover {
   background-color: var(--accent);
   color: var(--text-on-dark);
 }
+
 header nav a.active {
   background-color: var(--primary-light);
   color: var(--text-primary);
@@ -177,6 +182,7 @@ main {
   flex-wrap: wrap;
   margin-bottom: var(--space-lg);
 }
+
 .filter-btn {
   padding: 8px 20px;
   border: 2px solid var(--border);
@@ -189,6 +195,7 @@ main {
   cursor: pointer;
   transition: all var(--transition);
 }
+
 .filter-btn:hover,
 .filter-btn.active {
   background-color: var(--accent);
@@ -221,6 +228,7 @@ main {
   display: flex;
   flex-direction: column;
 }
+
 .product-card:hover,
 .card--product:hover {
   transform: translateY(-5px);
@@ -233,7 +241,7 @@ main {
 .product-card:hover .card-img-wrap img,
 .card--product:hover .card-img-wrap img { transform: scale(1.04); }
 
-/* Fallback for direct img inside product-card (no wrapper) */
+/* Fallback for direct img inside product-card */
 .product-card > img {
   width: 100%;
   height: 200px;
@@ -248,24 +256,9 @@ main {
   display: flex;
   flex-direction: column;
 }
-.card-body h3 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-.card-body p {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  margin-bottom: var(--space-md);
-  flex: 1;
-}
-.card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-}
+.card-body h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--text-primary); margin-bottom: 4px; }
+.card-body p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: var(--space-md); flex: 1; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
 
 /* Price */
 .price {
@@ -308,7 +301,6 @@ button.primary-btn {
 .btn:active,
 button.primary-btn:active { transform: translateY(1px); }
 
-/* Primary (default for primary-btn) */
 .btn--primary,
 button.primary-btn {
   background-color: var(--accent);
@@ -326,11 +318,7 @@ button.primary-btn:hover {
 .btn--outline { background-color: transparent; border-color: var(--text-primary); color: var(--text-primary); }
 .btn--outline:hover { background-color: var(--text-primary); color: var(--text-on-dark); }
 
-.btn--sm {
-  font-size: 0.82rem; padding: 7px 16px;
-  background-color: var(--accent); color: var(--text-on-dark);
-  border-radius: var(--radius-sm);
-}
+.btn--sm { font-size: 0.82rem; padding: 7px 16px; background-color: var(--accent); color: var(--text-on-dark); border-radius: var(--radius-sm); }
 .btn--sm:hover { background-color: var(--accent-hover); color: var(--text-on-dark); }
 
 .btn--danger { background-color: var(--error); color: #fff; border-color: var(--error); }
@@ -418,7 +406,7 @@ button.primary-btn:hover {
 .cart-total-label { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; }
 .cart-total-price { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--accent); }
 
-/* Legacy cart-summary (fallback) */
+/* Legacy cart-summary fallback */
 .cart-summary {
   text-align: right;
   margin-top: var(--space-lg);
@@ -442,7 +430,6 @@ button.primary-btn:hover {
 .modal-overlay.open,
 #successModal.open { opacity: 1; pointer-events: all; }
 
-/* Allow JS to show #successModal via display:flex when needed */
 #successModal[style*="flex"] { opacity: 1; pointer-events: all; }
 
 .modal,
@@ -555,6 +542,7 @@ footer { text-align: center; padding: var(--space-xl); background-color: var(--p
   .cart-drawer { width: 100%; }
   .search-box input { width: 120px; }
 }
+
 @media (max-width: 480px) {
   .product-card, .card--product { max-width: 100%; }
 }
