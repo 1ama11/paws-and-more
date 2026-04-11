@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paws & More — Adoption List 🐾</title>
 
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Your main CSS -->
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -27,11 +26,16 @@
     <a href="contact.html">Contact</a>
     <a href="policy.html">Policies</a>
   </nav>
-   <div style="display:flex;align-items:center;gap:10px;">
-    <a href="login.html" class="btn btn--sm">Login</a>
-    <a href="signup.html" class="btn btn--sm">Sign Up</a>
 
-    <a href="shop.html" class="nav-cart">🛒</a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <a href="login.html" class="btn btn--sm">Login</a>
+    <a href="register.html" class="btn btn--sm">Sign Up</a>
+
+    <!-- ✅ FIXED CART -->
+    <a href="shop.html#checkout-view" class="nav-cart">
+      🛒 <span class="cart-count" id="nav-cart-count" style="display:none;">0</span>
+    </a>
+
     <button class="nav-toggle">☰</button>
   </div>
 </header>
@@ -52,7 +56,7 @@
     <!-- PET -->
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="golden retriever.jpg" alt="Max">
+        <img src="golden retriever.jpg" alt="Max the Golden Retriever">
       </div>
       <div class="card-body">
         <h3>Max</h3>
@@ -63,7 +67,7 @@
 
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="persian cat.jpg" alt="Luna">
+        <img src="persian cat.jpg" alt="Luna the Persian Cat">
       </div>
       <div class="card-body">
         <h3>Luna</h3>
@@ -74,7 +78,7 @@
 
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="holland lop.jpg" alt="Thumper">
+        <img src="holland lop.jpg" alt="Thumper the Rabbit">
       </div>
       <div class="card-body">
         <h3>Thumper</h3>
@@ -85,7 +89,7 @@
 
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="beagle.jpg" alt="Buddy">
+        <img src="beagle.jpg" alt="Buddy the Beagle">
       </div>
       <div class="card-body">
         <h3>Buddy</h3>
@@ -96,7 +100,7 @@
 
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="tabby cat.jpg" alt="Oliver">
+        <img src="tabby cat.jpg" alt="Oliver the Tabby Cat">
       </div>
       <div class="card-body">
         <h3>Oliver</h3>
@@ -107,7 +111,7 @@
 
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="parakeet.jpg" alt="Sky">
+        <img src="parakeet.jpg" alt="Sky the Parakeet">
       </div>
       <div class="card-body">
         <h3>Sky</h3>
@@ -118,7 +122,7 @@
 
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="poodle.jpg" alt="Daisy">
+        <img src="poodle.jpg" alt="Daisy the Poodle">
       </div>
       <div class="card-body">
         <h3>Daisy</h3>
@@ -129,7 +133,7 @@
 
     <div class="card card--pet">
       <div class="card-img-wrap">
-        <img src="siamese.jpg" alt="Mittens">
+        <img src="siamese.jpg" alt="Mittens the Siamese Cat">
       </div>
       <div class="card-body">
         <h3>Mittens</h3>
@@ -156,5 +160,23 @@
 </footer>
 
 <script src="main.js"></script>
+
+<script>
+/* CART COUNT */
+const cart = JSON.parse(localStorage.getItem('pawsCart') || '[]');
+const count = cart.reduce((s, i) => s + i.qty, 0);
+
+if (count > 0) {
+  const badge = document.getElementById('nav-cart-count');
+  badge.style.display = 'inline';
+  badge.textContent = count;
+}
+
+/* MOBILE NAV */
+document.querySelector('.nav-toggle').addEventListener('click', () => {
+  document.querySelector('.main-nav').classList.toggle('open');
+});
+</script>
+
 </body>
 </html>
