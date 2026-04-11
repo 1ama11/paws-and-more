@@ -1,5 +1,5 @@
 /* ============================================================
-   adoption.css — styled to match shop.css / style.css
+   adoption.css
    ============================================================ */
 
 /* ── RESET & BOX MODEL ── */
@@ -7,9 +7,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Lato', 'Trebuchet MS', sans-serif;
 }
 
-/* ── CSS VARIABLES (same as shop.css) ── */
+/* ── CSS VARIABLES ── */
 :root {
   --primary:        #e2cc9e;
   --primary-dark:   #f0c196;
@@ -65,7 +66,7 @@ a:hover { color: var(--accent-hover); }
   padding: var(--space-xl) var(--space-lg);
 }
 
-/* ── TOP BAR (adopt-topbar → replaced by header style) ── */
+/* ── TOP BAR ── */
 .adopt-topbar {
   position: sticky;
   top: 0;
@@ -107,7 +108,6 @@ a:hover { color: var(--accent-hover); }
 .adopt-nav a:hover {
   background-color: var(--accent);
   color: var(--text-on-dark);
-  text-decoration: none;
 }
 
 .adopt-nav a.active {
@@ -175,9 +175,7 @@ h3 {
   transition: transform 400ms ease;
 }
 
-.pet-card:hover img {
-  transform: scale(1.03);
-}
+.pet-card:hover img { transform: scale(1.03); }
 
 .pet-card h3 {
   font-family: var(--font-display);
@@ -309,25 +307,19 @@ input[type="radio"] {
   padding: 10px 22px;
   cursor: pointer;
   text-decoration: none;
-  transition:
-    background-color var(--transition),
-    color var(--transition),
-    border-color var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
+  transition: background-color var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition),
+              box-shadow var(--transition);
   text-align: center;
 }
 
 .btn:active { transform: translateY(1px); }
 
-.btn:not([class*="btn--"]),
 .btn--primary {
   background-color: var(--accent);
   color: var(--text-on-dark);
-  border-color: transparent;
 }
 
-.btn:not([class*="btn--"]):hover,
 .btn--primary:hover {
   background-color: var(--accent-hover);
   color: var(--text-on-dark);
