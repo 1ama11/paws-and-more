@@ -1,0 +1,257 @@
+/* ============================================================
+   RESET & BOX MODEL
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ============================================================
+   CSS VARIABLES
+   ============================================================ */
+:root {
+  --primary:        #e2cc9e;
+  --primary-dark:   #f0c196;
+  --primary-light:  #b4ad6d;
+  --accent:         #8a7a2e;
+  --accent-hover:   #a8962e;
+  --text-primary:   #1a1a18;
+  --text-secondary: #4f4f4a;
+  --text-on-dark:   #f5f0e4;
+  --text-muted:     #7a7a6e;
+  --body-bg:        #ddd7b7;
+  --card-bg:        #f0e8c8;
+  --section-bg:     #afb480;
+  --admin-bg:       #3a3a2e;
+  --border:         #c8bf90;
+  --border-radius:  10px;
+  --radius-sm:      6px;
+  --success:        #2d8a00;
+  --error:          #d90429;
+  --warning:        #e07000;
+  --font-display:   'Playfair Display', Georgia, serif;
+  --font-body:      'Lato', 'Trebuchet MS', sans-serif;
+  --shadow-sm:  0 1px 4px rgba(26,26,24,.10);
+  --shadow-md:  0 4px 16px rgba(26,26,24,.13);
+  --shadow-lg:  0 8px 32px rgba(26,26,24,.18);
+  --transition: 220ms ease;
+  --space-xs:  4px; --space-sm:  8px; --space-md:  16px;
+  --space-lg:  28px; --space-xl:  48px; --space-2xl: 80px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+body { background-color: var(--body-bg); color: var(--text-primary); font-family: var(--font-body); font-size: 1rem; line-height: 1.65; min-height: 100vh; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--accent-hover); }
+
+/* ============================================================
+   HEADER  (.site-header / .navbar / .nav-links)
+   ============================================================ */
+.site-header {
+  position: sticky; top: 0; z-index: 200;
+  background-color: var(--primary);
+  padding: var(--space-md) var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  border-bottom: 2px solid var(--border);
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links { display: flex; gap: var(--space-xs); align-items: center; flex-wrap: wrap; }
+
+.nav-links a {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.nav-links a:hover { background-color: var(--accent); color: var(--text-on-dark); }
+.nav-links a.active { background-color: var(--primary-light); color: var(--text-primary); }
+
+.nav-cart { position: relative; font-size: 1.3rem; cursor: pointer; padding: 6px 10px; border-radius: var(--radius-sm); transition: background-color var(--transition); color: var(--text-primary); text-decoration: none; }
+.nav-cart:hover { background-color: var(--accent); color: var(--text-on-dark); }
+.cart-count { position: absolute; top: 0; right: 0; background-color: var(--error); color: #fff; font-size: 0.65rem; font-weight: 700; min-width: 18px; height: 18px; border-radius: 99px; display: flex; align-items: center; justify-content: center; padding: 0 4px; }
+.nav-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; padding: var(--space-xs); color: var(--text-primary); }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-family: var(--font-body); font-weight: 700; font-size: 0.95rem; border: 2px solid transparent; border-radius: var(--radius-sm); padding: 10px 22px; cursor: pointer; text-decoration: none; transition: background-color var(--transition), color var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition); }
+.btn:active, .btn-secondary:active { transform: translateY(1px); }
+
+.btn { background-color: var(--accent); color: var(--text-on-dark); }
+.btn:hover { background-color: var(--accent-hover); color: var(--text-on-dark); box-shadow: var(--shadow-sm); }
+
+.btn-secondary { background-color: var(--card-bg); color: var(--text-primary); border-color: var(--border); }
+.btn-secondary:hover { background-color: var(--primary); color: var(--text-primary); }
+
+.btn--primary { background-color: var(--accent); color: var(--text-on-dark); }
+.btn--primary:hover { background-color: var(--accent-hover); color: var(--text-on-dark); box-shadow: var(--shadow-sm); }
+.btn--outline { background-color: transparent; border-color: var(--text-primary); color: var(--text-primary); }
+.btn--outline:hover { background-color: var(--text-primary); color: var(--text-on-dark); }
+.btn--sm { font-size: 0.82rem; padding: 7px 16px; background-color: var(--accent); color: var(--text-on-dark); border-radius: var(--radius-sm); }
+.btn--sm:hover { background-color: var(--accent-hover); color: var(--text-on-dark); }
+.btn--danger { background-color: var(--error); color: #fff; border-color: var(--error); }
+.btn--danger:hover { background-color: #b5031f; color: #fff; }
+.btn--full { width: 100%; }
+
+/* ============================================================
+   CONTAINER & PAGE TITLE
+   ============================================================ */
+.container { max-width: 1100px; margin: var(--space-lg) auto; padding: 0 var(--space-md) var(--space-xl); }
+
+.page-title { margin-bottom: var(--space-lg); }
+.page-title h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: var(--space-sm); color: var(--text-primary); }
+.page-title p { color: var(--text-secondary); line-height: 1.65; font-size: 0.95rem; }
+
+/* ============================================================
+   GRID
+   ============================================================ */
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg); }
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--border-radius); padding: var(--space-lg); box-shadow: var(--shadow-sm); transition: box-shadow var(--transition); }
+.card:hover { box-shadow: var(--shadow-md); }
+.card h2 { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: var(--space-md); color: var(--text-primary); }
+
+.helper-text { line-height: 1.7; color: var(--text-secondary); font-size: 0.95rem; }
+
+/* ============================================================
+   FORMS
+   ============================================================ */
+.form-group { margin-bottom: var(--space-md); }
+
+label { display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; color: var(--text-primary); }
+
+input { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: var(--radius-sm); background-color: var(--body-bg); font-family: var(--font-body); font-size: 0.95rem; color: var(--text-primary); outline: none; transition: border-color var(--transition), box-shadow var(--transition); }
+input::placeholder { color: var(--text-muted); }
+input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(138,122,46,.15); }
+
+/* ============================================================
+   MESSAGES
+   ============================================================ */
+.message { margin-top: var(--space-md); padding: 10px 14px; border-radius: var(--radius-sm); font-weight: 700; font-size: 0.9rem; }
+.success { background: rgba(45,138,0,.10); color: var(--success); border: 1px solid rgba(45,138,0,.22); }
+.error { background: rgba(217,4,41,.08); color: var(--error); border: 1px solid rgba(217,4,41,.18); }
+
+/* ============================================================
+   PROFILE
+   ============================================================ */
+.profile-head { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-lg); }
+
+.avatar { width: 76px; height: 76px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--primary-dark); border: 2px solid var(--border); font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--text-primary); flex-shrink: 0; }
+
+/* ============================================================
+   SUMMARY GRID
+   ============================================================ */
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-md); }
+
+.summary-box { background: var(--body-bg); border: 1px solid var(--border); border-radius: var(--border-radius); padding: var(--space-md); text-align: center; box-shadow: var(--shadow-sm); transition: box-shadow var(--transition); }
+.summary-box:hover { box-shadow: var(--shadow-md); }
+.summary-box h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: var(--space-xs); color: var(--accent); }
+.summary-box p { color: var(--text-secondary); font-size: 0.85rem; }
+
+/* ============================================================
+   ORDERS
+   ============================================================ */
+.orders-list { display: grid; gap: var(--space-md); }
+
+.order-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--border-radius); padding: var(--space-md); box-shadow: var(--shadow-sm); transition: box-shadow var(--transition); }
+.order-card:hover { box-shadow: var(--shadow-md); }
+
+.order-top { display: flex; justify-content: space-between; align-items: center; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-sm); }
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.badge { padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.badge.pending { background: rgba(224,112,0,.12); color: var(--warning); }
+.badge.shipped { background: rgba(138,122,46,.14); color: var(--accent); }
+.badge.delivered { background: rgba(45,138,0,.12); color: var(--success); }
+
+/* ============================================================
+   ORDER MISC
+   ============================================================ */
+.order-items, .order-footer, .meta-text { color: var(--text-secondary); line-height: 1.6; font-size: 0.9rem; }
+
+.order-footer { display: flex; justify-content: space-between; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-sm); padding-top: var(--space-sm); border-top: 1px solid var(--border); }
+
+.link-row { margin-top: var(--space-md); display: flex; gap: var(--space-sm); flex-wrap: wrap; }
+
+/* ============================================================
+   USER MENU DROPDOWN
+   ============================================================ */
+.user-menu { cursor: pointer; position: relative; font-size: 20px; }
+.user-dropdown { display: none; position: absolute; right: 0; top: 30px; background: var(--card-bg); border-radius: var(--radius-sm); box-shadow: var(--shadow-md); overflow: hidden; min-width: 120px; border: 1px solid var(--border); }
+.user-dropdown a { display: block; padding: 10px var(--space-md); text-decoration: none; color: var(--text-primary); font-size: 0.88rem; font-weight: 600; transition: background-color var(--transition); }
+.user-dropdown a:hover { background: var(--body-bg); color: var(--accent); }
+.user-menu:hover .user-dropdown { display: block; }
+
+/* ============================================================
+   SEARCH BOX
+   ============================================================ */
+.search-box { position: relative; margin-right: 5px; }
+.search-box input { padding: 8px 12px; border-radius: 20px; border: 1px solid var(--border); outline: none; font-size: 14px; width: 160px; transition: width var(--transition), border-color var(--transition); background-color: var(--card-bg); color: var(--text-primary); font-family: var(--font-body); }
+.search-box input:focus { width: 220px; border-color: var(--accent); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer { text-align: center; padding: var(--space-xl); background-color: var(--primary-light); border-top: 1px solid var(--border); }
+.footer-logo { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); }
+.footer-nav { display: flex; justify-content: center; gap: var(--space-md); margin-bottom: var(--space-md); flex-wrap: wrap; }
+.footer-nav a { color: var(--text-primary); font-size: 0.88rem; font-weight: 600; transition: color var(--transition); }
+.footer-nav a:hover { color: var(--accent); }
+.footer-copy { font-size: 0.8rem; color: var(--text-secondary); }
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px) {
+  .grid-2, .summary-grid { grid-template-columns: 1fr; }
+  .page-title h1 { font-size: 1.75rem; }
+  .profile-head { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 768px) {
+  .site-header { padding: var(--space-md); }
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background-color: var(--primary); padding: var(--space-md); box-shadow: var(--shadow-md); border-bottom: 2px solid var(--border); z-index: 99; }
+  .nav-links.open { display: flex; }
+  .nav-toggle { display: block; }
+  .search-box input { width: 120px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 0 var(--space-sm) var(--space-lg); }
+}

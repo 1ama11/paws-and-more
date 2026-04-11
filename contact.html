@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us — Paws & More 🐾</title>
-
-  <!-- Fonts -->
+  <title>Paws &amp; More 🐾 — Contact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- Your CSS -->
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -30,45 +26,67 @@
     }
 
     .contact-box {
-      background: white;
+      background: var(--card-bg);
       padding: 20px;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-box h3 {
+      font-family: var(--font-display);
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .contact-box p, .contact-box a {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
     }
 
     .contact-form {
-      background: white;
+      background: var(--card-bg);
       padding: 24px;
-      border-radius: 12px;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow-md);
       align-self: start;
     }
 
+    .contact-form h2 {
+      font-family: var(--font-display);
+      margin-bottom: var(--space-md);
+      color: var(--text-primary);
+    }
+
     .contact-form input,
     .contact-form textarea {
-      width: 70%;
-      padding: 8px 12px;
+      width: 100% !important;
+      box-sizing: border-box;
+      padding: 10px 14px;
       margin-bottom: 4px;
-      border-radius: 8px;
-      border: 2px solid #ccc;
-      font-family: inherit;
-      font-size: 0.88rem;
-      transition: border-color 220ms ease;
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--border);
+      background: var(--body-bg);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-primary);
       outline: none;
-      display: block;
+      transition: border-color var(--transition);
     }
+
     .contact-form input:focus,
     .contact-form textarea:focus {
       border-color: var(--accent);
     }
-    /* spacing wrapper so each field + its error has bottom gap */
+
     .contact-form .field-wrap {
       margin-bottom: 14px;
     }
 
     .contact-form textarea {
       resize: none;
-      height: 100px;
+      height: 120px;
     }
 
     @media (max-width: 768px) {
@@ -80,18 +98,17 @@
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <a href="index.html" class="logo">Paws & More 🐾</a>
-  <nav class="main-nav">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="adoption.html">Adoption</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
-    <a href="policy.html">Policy</a>
-  </nav>
-
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="logo">Paws &amp; More 🐾</a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
     <div style="display:flex;align-items:center;gap:10px;">
 
   <!-- 🔐 Auth buttons -->
@@ -105,70 +122,73 @@
   <button class="nav-toggle">☰</button>
 
 </div>
+      <a href="login.html" class="btn btn--sm">Login</a>
+      <a href="register.html" class="btn btn--sm">Sign Up</a>
+      <a href="profile.html" class="btn btn--sm">Profile</a>
+      <a href="shop.html" class="nav-cart">🛒</a>
+      <button class="nav-toggle">☰</button>
+    </div>
   </header>
 
-<!-- HERO -->
-<section class="hero" style="padding:80px var(--space-xl); text-align:center;">
-  <h1>Contact Us 📞</h1>
-  <p>We’d love to hear from you! Whether you have a question or want to adopt a pet.</p>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Get In Touch</span>
+      <h1>Contact Us 📞</h1>
+      <p>We'd love to hear from you! Whether you have a question or want to adopt a pet.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn--primary">Send a Message</a>
+      </div>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">🐾</div>
+  </section>
 
-<!-- CONTACT SECTION -->
-<section class="contact-container">
+  <!-- CONTACT SECTION (original two-column layout) -->
+  <section class="contact-container" id="contact">
 
-  <!-- INFO -->
-  <div class="contact-info">
-
-    <div class="contact-box">
-      <h3>📍 Address</h3>
-      <p>Cairo, Egypt</p>
+    <!-- INFO -->
+    <div class="contact-info">
+      <div class="contact-box">
+        <h3>📍 Address</h3>
+        <p>Cairo, Egypt</p>
+      </div>
+      <div class="contact-box">
+        <h3>📧 Email</h3>
+        <p><a href="/cdn-cgi/l/email-protection#69010c0505062919081e1a08070d04061b0c470a0604"><span class="__cf_email__" data-cfemail="5038353c3c3f1020312723313e343d3f22357e333f3d">[email&#160;protected]</span></a></p>
+      </div>
+      <div class="contact-box">
+        <h3>📞 Phone</h3>
+        <p>+20 123 456 7890</p>
+      </div>
+      <div class="contact-box">
+        <h3>⏰ Working Hours</h3>
+        <p>Sun – Thu: 9AM – 6PM</p>
+      </div>
     </div>
 
-    <div class="contact-box">
-      <h3>📧 Email</h3>
-      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5c6c0c5c5dac7c1f5c5d4c2c6d4dbd1d8dac7d09bd6dad8">[email&#160;protected]</a></p>
+    <!-- FORM -->
+    <div class="contact-form">
+      <h2>Send a Message 💬</h2>
+      <div class="field-wrap"><input type="text" id="contact-name" placeholder="Your Name"></div>
+      <div class="field-wrap"><input type="email" id="contact-email" placeholder="Your Email"></div>
+      <div class="field-wrap"><textarea id="contact-message" placeholder="Your Message"></textarea></div>
+      <button class="btn btn--primary btn--full" id="send-btn">Send Message</button>
     </div>
 
-    <div class="contact-box">
-      <h3>📞 Phone</h3>
-      <p>+20 123 456 7890</p>
-    </div>
+  </section>
 
-    <div class="contact-box">
-      <h3>⏰ Working Hours</h3>
-      <p>Sun - Thu: 9AM - 6PM</p>
-    </div>
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Paws &amp; More 🐾</p>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+    <p class="footer-copy">© 2019 Paws &amp; More. All rights reserved.</p>
+  </footer>
 
-  </div>
-
-  <!-- FORM -->
-  <div class="contact-form">
-    <h2>Send a Message 💬</h2>
-
-    <div class="field-wrap"><input type="text" id="contact-name" placeholder="Your Name"></div>
-    <div class="field-wrap"><input type="email" id="contact-email" placeholder="Your Email"></div>
-    <div class="field-wrap"><textarea id="contact-message" placeholder="Your Message"></textarea></div>
-
-    <button class="btn btn--primary" id="send-btn">Send Message</button>
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p class="footer-logo">Paws & More 🐾</p>
-  <nav class="footer-nav">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="adoption.html">Adoption</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="policy.html">Policy</a>
-  </nav>
-  <p class="footer-copy">© 2019 Paws & More. All rights reserved.</p>
-</footer>
-
-
-  <script src="main.js"></script>
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-

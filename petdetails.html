@@ -1,24 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pet Details - Paws and More</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paws & More 🐾 — Pet Details</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .pet-details-layout {
+      max-width: 750px;
+      margin: var(--space-xl) auto;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+
+    .pet-details-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .pet-details-img-placeholder {
+      width: 100%;
+      height: 320px;
+      background-color: var(--section-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8rem;
+    }
+
+    .pet-details-body {
+      padding: var(--space-lg);
+    }
+
+    .pet-details-body h2 {
+      font-family: var(--font-display);
+      color: var(--accent);
+    }
+
+    .pet-details-meta {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-md);
+    }
+
+    .pet-details-meta span {
+      font-size: 0.8rem;
+      background: var(--body-bg);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+    }
+
+    .pet-details-desc {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-lg);
+    }
+
+    .pet-details-actions {
+      display: flex;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: var(--space-lg);
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    .pet-not-found {
+      text-align: center;
+      padding: var(--space-xl);
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <a href="adoption-list.html" class="btn" style="margin-bottom: 20px;">← Back</a>
-        <div class="pet-details-layout">
-            <div class="pet-info">
-                <h2 id="petNameDisp"></h2>
-                <p id="breedRow" style="display:none;"><strong>Breed:</strong> <span id="petBreed"></span></p>
-                <p id="ageRow" style="display:none;"><strong>Age:</strong> <span id="petAge"></span></p>
-                <br>
-                <p id="petDesc"></p>
-                <br>
-                <a href="adoption-form.html " id="adoptLink" class="btn" style="display:none;">Adopt Me Now</a>
-            </div>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">Paws & More 🐾</a>
+
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="adoption.html" class="active">Adoption</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="policy.html">Policy</a>
+  </nav>
+
+  <div style="display:flex;gap:10px;align-items:center;">
+    <a href="login.html" class="btn btn--sm">Login</a>
+    <a href="register.html" class="btn btn--sm">Sign Up</a>
+    <a href="profile.html" class="btn btn--sm">Profile</a>
+
+    <!-- ✅ FIXED CART -->
+    <a href="shop.html#checkout-view" class="nav-cart">
+      🛒 <span class="cart-count" id="nav-cart-count" style="display:none;">0</span>
+    </a>
+
+    <button class="nav-toggle">☰</button>
+  </div>
+</header>
+
+<!-- BACK -->
+<a href="adoption.html#pets" class="back-link">← Back to Adoption</a>
+
+<!-- CONTENT -->
+<div id="pet-details-container"></div>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">Paws & More 🐾</p>
+  <p class="footer-copy">© 2019 Paws & More</p>
+</footer>
+
+<script>
+/* PET DATA */
+const pets = [
+  { name:'Max', breed:'Golden Retriever', age:'3 years', gender:'Male', img:'golden retriever.jpg', desc:'Friendly and playful dog.' },
+  { name:'Luna', breed:'Persian Cat', age:'2 years', gender:'Female', img:'persian cat.jpg', desc:'Calm and elegant cat.' }
+];
+
+/* GET PET */
+const params = new URLSearchParams(window.location.search);
+const petName = params.get('name');
+const pet = pets.find(p => p.name.toLowerCase() === (petName || '').toLowerCase());
+
+const container = document.getElementById('pet-details-container');
+
+if (pet) {
+  container.innerHTML = `
+    <div class="pet-details-layout">
+      <img src="${pet.img}" class="pet-details-img"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="pet-details-img-placeholder" style="display:none;">🐾</div>
+
+      <div class="pet-details-body">
+        <h2>${pet.name}</h2>
+
+        <div class="pet-details-meta">
+          <span>${pet.breed}</span>
+          <span>${pet.age}</span>
+          <span>${pet.gender}</span>
         </div>
+
+        <p class="pet-details-desc">${pet.desc}</p>
+
+        <div class="pet-details-actions">
+          <a href="adoption.html#pets" class="btn btn--outline">Back</a>
+          <a href="adoption-form.html?name=${encodeURIComponent(pet.name)}" class="btn btn--primary">
+            Adopt ${pet.name}
+          </a>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+  `;
+} else {
+  container.innerHTML = `
+    <div class="pet-not-found">
+      <h3>Pet not found</h3>
+      <a href="adoption.html#pets" class="btn btn--primary">Browse Pets</a>
+    </div>
+  `;
+}
+
+/* MOBILE NAV */
+document.querySelector('.nav-toggle').addEventListener('click', () => {
+  document.querySelector('.main-nav').classList.toggle('open');
+});
+
+/* CART COUNT */
+const cart = JSON.parse(localStorage.getItem('pawsCart') || '[]');
+const count = cart.reduce((s, i) => s + i.qty, 0);
+if (count > 0) {
+  const badge = document.getElementById('nav-cart-count');
+  badge.style.display = 'inline';
+  badge.textContent = count;
+}
+</script>
+
 </body>
 </html>
