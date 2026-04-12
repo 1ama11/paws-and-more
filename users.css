@@ -1,82 +1,268 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paws & More | Login</title>
-  <link rel="stylesheet" href="users.css" />
-</head>
-<body>
+/* ============================================================
+   GOOGLE FONTS (MATCH STYLE.CSS)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="navbar">
-      <div class="logo"><a href="index.html">Paws <span>&amp;</span> More</a></div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="adoption.html">Adoption</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="policy.html">Policy</a>
-      </nav>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <a href="login.html" class="btn active">Login</a>
-        <a href="register.html" class="btn-secondary">Sign Up</a>
-        <a href="profile.html" class="btn-secondary">Profile</a>
-        <a href="shop.html">🛒</a>
-      </div>
-    </div>
-  </header>
+/* ============================================================
+   VARIABLES (SAME AS STYLE.CSS)
+   ============================================================ */
+:root {
+  --primary:        #e2cc9e;
+  --primary-dark:   #f0c196;
+  --primary-light:  #b4ad6d;
+  --accent:         #8a7a2e;
+  --accent-hover:   #a8962e;
+  --text-primary:   #1a1a18;
+  --text-secondary: #4f4f4a;
+  --text-muted:     #7a7a6e;
+  --body-bg:        #ddd7b7;
+  --card-bg:        #f0e8c8;
+  --border:         #c8bf90;
+  --border-radius:  10px;
 
-  <!-- MAIN (untouched) -->
-  <main class="container">
-    <section class="page-title">
-      <h1>Login</h1>
-      <p>Sign in to manage your orders, update your account, and continue your journey with Paws & More.</p>
-    </section>
+  --font-display:   'Playfair Display', serif;
+  --font-body:      'Lato', sans-serif;
 
-    <section class="grid-2">
-      <div class="card">
-        <form id="loginForm">
-          <div class="form-group">
-            <label for="loginEmail">Email Address</label>
-            <input type="email" id="loginEmail" placeholder="Enter your email" />
-          </div>
-          <div class="form-group">
-            <label for="loginPassword">Password</label>
-            <input type="password" id="loginPassword" placeholder="Enter your password" />
-          </div>
-          <button class="btn" type="submit">Login</button>
-          <div id="loginMessage"></div>
-        </form>
+  --shadow-sm:  0 1px 4px rgba(26,26,24,.10);
+  --shadow-md:  0 4px 16px rgba(26,26,24,.13);
+  --transition: 220ms ease;
+}
 
-        <div class="link-row">
-          <a class="btn-secondary" href="register.html">Create Account</a>
-        </div>
-      </div>
+/* ============================================================
+   BASE
+   ============================================================ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-      <div class="card">
-        <h2>Why sign in?</h2>
-        <p class="helper-text">Access your profile, track your pet-product orders, and prepare for future adoption-related features when the backend is connected.</p>
-      </div>
-    </section>
-  </main>
+body {
+  font-family: var(--font-body);
+  background-color: var(--body-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
 
-  <!-- FOOTER -->
-  <footer style="text-align:center; padding:32px 20px; background:var(--primary-light); border-top:1px solid var(--border-color); margin-top:48px;">
-    <p style="font-size:1.2rem; font-weight:800; margin-bottom:12px; color:var(--dark-color);">Paws &amp; More 🐾</p>
-    <nav style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:12px;">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="adoption.html">Adoption</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="policy.html">Policy</a>
-    </nav>
-    <p style="font-size:0.82rem; color:var(--muted-text);">© 2019 Paws &amp; More. All rights reserved.</p>
-  </footer>
+a {
+  text-decoration: none;
+  color: var(--accent);
+  transition: var(--transition);
+}
 
-  <script src="users.js"></script>
-</body>
-</html>
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ============================================================
+   HEADER (MATCH MAIN STYLE)
+   ============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--primary);
+  padding: 16px 40px;
+  border-bottom: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo a {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.nav-links a:hover {
+  background: var(--accent);
+  color: white;
+}
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.page-title h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.page-title p {
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   GRID
+   ============================================================ */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* ============================================================
+   CARD
+   ============================================================ */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  padding: 25px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  background: var(--body-bg);
+  font-family: var(--font-body);
+}
+
+.form-group input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* ============================================================
+   BUTTONS (MATCH MAIN STYLE)
+   ============================================================ */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+}
+
+.btn.active {
+  background: var(--primary-light);
+  color: var(--text-primary);
+}
+
+.btn-secondary {
+  border: 2px solid var(--text-primary);
+  background: transparent;
+  color: var(--text-primary);
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: var(--text-primary);
+  color: white;
+}
+
+/* ============================================================
+   EXTRA ELEMENTS
+   ============================================================ */
+.helper-text {
+  color: var(--text-secondary);
+  margin-top: 10px;
+}
+
+.link-row {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* ============================================================
+   FOOTER (MATCH STYLE)
+   ============================================================ */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  background: var(--primary-light);
+  border-top: 1px solid var(--border);
+}
+
+footer nav {
+  margin: 10px 0;
+}
+
+footer a {
+  margin: 0 10px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
