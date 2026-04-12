@@ -1,13 +1,13 @@
 // Updated Product Database with Categories and Tags
 const products = [
-    { id: 1, name: "Premium Dog Kibble", price: 45.99, category: "dogs", isBestSeller: true, isEssential: true, img: "[Premiumdogkibble.avif]" },
-    { id: 2, name: "Squeaky Bone Toy", price: 8.50, category: "dogs", isBestSeller: false, isEssential: false, img: "[dogtoy.jpg]" },
+    { id: 1, name: "Premium Dog Kibble", price: 45.99, category: "dogs", isBestSeller: true, isEssential: true, img: "Premiumdogkibble.avif" },
+    { id: 2, name: "Squeaky Bone Toy", price: 8.50, category: "dogs", isBestSeller: false, isEssential: false, img: "dogtoy.jpg" },
     { id: 3, name: "Luxury Cat Tree", price: 120.00, category: "cats", isBestSeller: true, isEssential: false, img: "cattree.jpg" },
     { id: 4, name: "Organic Catnip", price: 12.99, category: "cats", isBestSeller: false, isEssential: false, img: "catnip.jpg" },
-    { id: 5, name: "Hamster Wheel", price: 15.00, category: "other", isBestSeller: false, isEssential: true, img: "https://via.placeholder.com/150/beb692/070706?text=Hamster+Wheel" },
-    { id: 6, name: "Bird Seed Mix", price: 10.50, category: "other", isBestSeller: true, isEssential: true, img: "whatsApp image 2026-04-09 at 3.19.17 PM.jpeg" },
-    { id: 7, name: "Cat Litter Box", price: 25.00, category: "cats", isBestSeller: true, isEssential: true, img: "https://via.placeholder.com/150/d8cfb0/070706?text=Litter+Box" },
-    { id: 8, name: "Dog Leash & Collar", price: 18.99, category: "dogs", isBestSeller: false, isEssential: true, img: "https://via.placeholder.com/150/f8f5e8/070706?text=Dog+Leash" }
+    { id: 5, name: "Hamster Wheel", price: 15.00, category: "other", isBestSeller: false, isEssential: true, img: "hamsterwheel.jpeg" },
+    { id: 6, name: "Bird Seed Mix", price: 10.50, category: "other", isBestSeller: true, isEssential: true, img: "birdseed.jpeg" },
+    { id: 7, name: "Cat Litter Box", price: 25.00, category: "cats", isBestSeller: true, isEssential: true, img: "catlitter.jpeg" },
+    { id: 8, name: "Dog Leash & Collar", price: 18.99, category: "dogs", isBestSeller: false, isEssential: true, img: "dogleash.jpeg" }
 ];
 
 // Initialize Page
