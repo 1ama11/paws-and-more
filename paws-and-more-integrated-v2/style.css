@@ -326,31 +326,7 @@ footer { text-align: center; padding: var(--space-xl); background-color: var(--p
 .user-menu:hover .user-dropdown {
   display: block;
 }
-.search-box {
-  position: relative;
-}
 
-.search-box input {
-  padding: 8px 12px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  outline: none;
-  font-size: 14px;
-  width: 180px;
-  transition: 0.3s;
-}
-
-.search-box input:focus {
-  width: 220px;
-  border-color: var(--primary-color);
-}
-.search-box {
-  margin-right: 5px;
-}
-
-.search-box input {
-  width: 160px;
-}
 
 @media (max-width: 768px) {
   .search-box input {
