@@ -62,7 +62,6 @@ header {
 .nav-cart { position: relative; font-size: 1.3rem; cursor: pointer; padding: 6px 10px; border-radius: var(--radius-sm); transition: background-color var(--transition); color: var(--text-primary); text-decoration: none; }
 .nav-cart:hover { background-color: var(--accent); color: var(--text-on-dark); }
 .cart-count { position: absolute; top: 0; right: 0; background-color: var(--error); color: #fff; font-size: 0.65rem; font-weight: 700; min-width: 18px; height: 18px; border-radius: 99px; display: flex; align-items: center; justify-content: center; padding: 0 4px; }
-.nav-toggle { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; padding: var(--space-xs); color: var(--text-primary); }
 
 /* ============================================================
    BUTTONS
@@ -209,14 +208,6 @@ footer { text-align: center; padding: var(--space-xl); background-color: var(--p
   .grid-2, .summary-grid { grid-template-columns: 1fr; }
   .page-title h1 { font-size: 1.75rem; }
   .profile-head { flex-direction: column; text-align: center; }
-}
-
-@media (max-width: 768px) {
-  .site-header { padding: var(--space-md); }
-  .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background-color: var(--primary); padding: var(--space-md); box-shadow: var(--shadow-md); border-bottom: 2px solid var(--border); z-index: 99; }
-  .nav-links.open { display: flex; }
-  .nav-toggle { display: block; }
-  .search-box input { width: 120px; }
 }
 
 @media (max-width: 480px) {
