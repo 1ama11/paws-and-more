@@ -7,19 +7,30 @@
   <link rel="stylesheet" href="users.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="navbar">
-      <div class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Paws <span>&</span> More</a></div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="adoption.html">Adoption</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Sign up</a>
-        <a href="profile.html" class="active">Profile</a>
-        <a href="orders.html">Orders</a>
-      </nav>
-    </div>
+
+   <header>
+    <a href="index.html" class="logo">Paws &amp; More 🐾</a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="adoption.html">Adoption</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="policy.html">Policy</a>
+    </nav>
+     <div style="display:flex;align-items:center;gap:10px;">
+  <!-- 🔐 Auth buttons -->
+  <a href="login.html" class="btn btn--sm">Login</a>
+  <a href="register.html" class="btn btn--sm">Sign Up</a>
+  <a href="profile.html" class="btn btn--sm" class="active">Profile</a>
+
+  <!-- 🛒 Cart -->
+  <a href="shop.html" class="nav-cart">🛒</a>
+
+  <!-- ☰ Mobile menu -->
+  <button class="nav-toggle">☰</button>
+
+</div>
   </header>
 
   <main class="container">
