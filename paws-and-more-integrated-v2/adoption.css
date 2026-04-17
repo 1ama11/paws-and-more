@@ -34,32 +34,71 @@ body {
     line-height: 1.6;
 }
 
+
+
+
+/* ============================================================
+   HEADER (MATCHES MAIN STYLE)
+   ============================================================ */
 .adopt-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 5%;
-    background: #e2cc9e;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+
+    padding: 16px 48px; /* matches spacing */
+    background-color: var(--primary-color);
+
+    box-shadow: 0 1px 4px rgba(26,26,24,.10);
+    border-bottom: 2px solid var(--border-color);
+
     width: 100%;
     margin-bottom: 40px;
 }
 
-.adopt-brand a, .adopt-nav a {
-    text-decoration: none;
-    color: #2b2b2b;
+/* Logo */
+.adopt-brand a {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
     font-weight: 700;
+    color: var(--dark-color);
+    text-decoration: none;
+    letter-spacing: -0.02em;
 }
 
+/* Navigation container */
 .adopt-nav {
     display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
 }
 
-.adopt-nav a:hover {
-    text-decoration: underline;
+/* Links */
+.adopt-nav a {
+    color: var(--dark-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
+
+/* Hover like main style */
+.adopt-nav a:hover {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+}
+
+/* Optional active page */
+.adopt-nav a.active {
+    background-color: var(--primary-light);
+    color: var(--dark-color);
+}
+
 
 .container {
     max-width: 1100px;
