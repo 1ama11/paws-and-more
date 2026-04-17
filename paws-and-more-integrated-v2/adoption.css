@@ -2,21 +2,23 @@
   --primary-color: #e2cc9e;
   --primary-dark: #f0c196;
   --primary-light: #b4ad6d;
-  --accent-color: #beb071;
+  --accent-color: #8a7a2e;
+  --accent-hover: #a8962e;
   --accent-light: #c9cabc;
   --secondary-color: #beb692;
-  --dark-color: #070706;
-  --muted-text: #383836;
-  --light-color: #131111;
-  --body-bg: #f5f3ea;
-  --card-bg: #ffffff;
-  --section-bg: #f8f5e8;
-  --border-color: #d8cfb0;
-  --input-background: #ffffff;
-  --success-color: #38b000;
+  --dark-color: #1a1a18;
+  --muted-text: #4f4f4a;
+  --light-color: #f5f0e4;
+  --body-bg: #ddd7b7;
+  --card-bg: #f0e8c8;
+  --section-bg: #afb480;
+  --border-color: #c8bf90;
+  --input-background: #ddd7b7;
+  --success-color: #2d8a00;
   --error-color: #d90429;
-  --warning-color: #f77f00;
+  --warning-color: #e07000;
 }
+
 
 
 * {
@@ -119,7 +121,7 @@ h1 {
 }
 
 .pet-info h2 {
-    color: var(--primary-dark);
+    color: var(--dark-color);
     font-size: 2rem;
     margin-bottom: 15px;
 }
@@ -148,15 +150,15 @@ h1 {
 .form-group textarea {
     padding: 12px;
     background-color: var(--input-background);
-    color: #000000;
+    color: var(--dark-color);
     border: 1px solid var(--accent-light);
     border-radius: 5px;
     font-size: 1rem;
 }
 
 .form-group input[readonly] {
-    background-color: #f9f8f6;
-    color:#070706;
+    background-color: var(--body-bg);
+    color: var(--dark-color);
     cursor: not-allowed;
 }
 
@@ -180,9 +182,10 @@ h1 {
     border: 4px solid var(--success-color);
 }
 
+/* ── BUTTONS ── */
 .btn {
-    background-color: var(--primary-dark);
-    color: var(--dark-color);
+    background-color: var(--accent-color);        /* olive-green, matching friend */
+    color: var(--light-color);                     /* light text on dark button */
     padding: 12px 24px;
     border: none;
     border-radius: 6px;
@@ -195,14 +198,14 @@ h1 {
 }
 
 .btn:hover {
-    background-color: var(--accent-color);
-    color: #fff;
+    background-color: var(--accent-hover);        /* slightly lighter olive on hover */
+    color: var(--light-color);
 }
 
 .custom-select {
     padding: 12px;
     background-color: var(--input-background);
-    color: #090000;
+    color: var(--dark-color);
     border: 1px solid var(--accent-light);
     border-radius: 5px;
     font-size: 1rem;
@@ -225,7 +228,7 @@ h1 {
 }
 
 input[type="radio"] {
-    accent-color: var(--primary-dark);
+    accent-color: var(--accent-color);
     width: 18px;
     height: 18px;
     cursor: pointer;
