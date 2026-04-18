@@ -1,5 +1,5 @@
 /* ── 1. ── */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded'), () => {
 
   /* ── 2. CART BADGE ── */
   updateCartBadge();
@@ -129,4 +129,4 @@ function sendMessage() {
     btn.textContent = 'Send Message';
     btn.style.backgroundColor = '';
   }, 3000);
-}
+} }
