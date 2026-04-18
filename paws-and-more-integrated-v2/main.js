@@ -1,49 +1,42 @@
-/* ============================================================
-   PAWS & MORE — main.js
-   Shared across: index.html, about.html, contact.html,
-                  shop.html, adoption.html
-   ============================================================ */
-
-/* ── 1. MOBILE NAV TOGGLE ── */
+/* ── 1. ── */
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav-toggle');
-  const nav    = document.querySelector('.main-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => nav.classList.toggle('open'));
-  }
 
   /* ── 2. CART BADGE ── */
   updateCartBadge();
 
-  /* ── 3. NEWSLETTER ── */
+    /* ── 3. NEWSLETTER ── */
   const nlBtn   = document.getElementById('nl-btn');
   const nlInput = document.getElementById('nl-email');
+
   if (nlBtn && nlInput) {
     nlBtn.addEventListener('click', () => {
-      if (nlInput.value.includes('@')) {
+
+      const email = nlInput.value.trim();
+
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
         nlBtn.textContent = '✓ Subscribed!';
         nlBtn.style.backgroundColor = 'var(--success)';
         nlInput.value = '';
+
         setTimeout(() => {
           nlBtn.textContent = 'Subscribe';
           nlBtn.style.backgroundColor = '';
         }, 3000);
+
       } else {
         nlInput.style.borderColor = 'var(--error)';
         setTimeout(() => { nlInput.style.borderColor = ''; }, 2000);
       }
+
     });
   }
-
   /* ── 4. CONTACT FORM ── */
   const sendBtn = document.getElementById('send-btn');
   if (sendBtn) {
     sendBtn.addEventListener('click', sendMessage);
   }
 
-  /* ── 5. SEARCH ── */
-  initSearch();
-});
+
 
 /* ── CART BADGE ── */
 function updateCartBadge() {
@@ -56,91 +49,7 @@ function updateCartBadge() {
   }
 }
 
-
-
-/* ── GLOBAL SEARCH ── */
-
-function initSearch() {
-  const searchInput = document.getElementById('searchInput');
-  if (!searchInput) return;
-
-  const page = currentPage();
-
-  // ALWAYS redirect on Enter (ALL pages)
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') redirectToSearch();
-  });
-
-  // Click on icon also works
-  const searchBox = searchInput.closest('.search-box');
-  if (searchBox) {
-    const icon = searchBox.querySelector('span');
-    if (icon) {
-      icon.style.cursor = 'pointer';
-      icon.addEventListener('click', redirectToSearch);
-    }
-  }
-
-  // If already on shop or adoption → filter results
-  if (page === 'shop.html' || page === 'adoption.html') {
-    const params = new URLSearchParams(window.location.search);
-    const q = params.get('search');
-
-    if (q) {
-      searchInput.value = q;
-      filterItems(q);
-    }
-
-    searchInput.addEventListener('keyup', () => {
-      filterItems(searchInput.value);
-    });
-  }
-}
-
-function redirectToSearch() {
-  const query = document.getElementById('searchInput').value.trim();
-  if (!query) return;
-
-  // Always go to shop page
-  window.location.href = 'shop.html?search=' + encodeURIComponent(query);
-}
-
-function filterItems(query) {
-  query = query.toLowerCase().trim();
-
-  const cards = document.querySelectorAll(
-    '.card--product, .card--pet, .card--category'
-  );
-
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = (!query || text.includes(query)) ? '' : 'none';
-  });
-
-  // No results message
-  const grid = document.getElementById('product-grid') || document.getElementById('pet-grid');
-
-  if (grid) {
-    let noResults = document.getElementById('no-results-msg');
-    const allHidden = [...cards].every(c => c.style.display === 'none');
-
-    if (allHidden && query) {
-      if (!noResults) {
-        noResults = document.createElement('p');
-        noResults.id = 'no-results-msg';
-        noResults.style.cssText =
-          'text-align:center;color:var(--text-muted);padding:var(--space-xl);width:100%;';
-        grid.appendChild(noResults);
-      }
-      noResults.textContent = `🔍 No results found for "${query}"`;
-    } else if (noResults) {
-      noResults.remove();
-    }
-  }
-}
-
 /* ── CONTACT FORM VALIDATION ── */
-
 function showError(input, msg) {
   clearError(input);
   input.style.borderColor = 'var(--error)';

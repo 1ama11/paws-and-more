@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paws &amp; More 🐾 — Contact</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -89,11 +88,6 @@
       height: 120px;
     }
 
-    @media (max-width: 768px) {
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
-    }
   </style>
 </head>
 <body>
@@ -130,7 +124,7 @@
     <div class="hero-paw-bg" aria-hidden="true">🐾</div>
   </section>
 
-  <!-- CONTACT SECTION (original two-column layout) -->
+  <!-- CONTACT SECTION -->
   <section class="contact-container" id="contact">
 
     <!-- INFO -->
@@ -141,7 +135,7 @@
       </div>
       <div class="contact-box">
         <h3>📧 Email</h3>
-        <p><a href="/cdn-cgi/l/email-protection#69010c0505062919081e1a08070d04061b0c470a0604"><span class="__cf_email__" data-cfemail="5038353c3c3f1020312723313e343d3f22357e333f3d">[email&#160;protected]</span></a></p>
+        <p><a href="mailto:hello@pawsandmore.com">hello@pawsandmore.com</a></p>
       </div>
       <div class="contact-box">
         <h3>📞 Phone</h3>
@@ -156,9 +150,20 @@
     <!-- FORM -->
     <div class="contact-form">
       <h2>Send a Message 💬</h2>
-      <div class="field-wrap"><input type="text" id="contact-name" placeholder="Your Name"></div>
-      <div class="field-wrap"><input type="email" id="contact-email" placeholder="Your Email"></div>
-      <div class="field-wrap"><textarea id="contact-message" placeholder="Your Message"></textarea></div>
+
+      <!-- Error banner injected here by main.js -->
+      <div id="form-error-banner"></div>
+
+      <div class="field-wrap">
+        <input type="text" id="contact-name" placeholder="Your Name">
+      </div>
+      <div class="field-wrap">
+        <input type="email" id="contact-email" placeholder="Your Email">
+      </div>
+      <div class="field-wrap">
+        <textarea id="contact-message" placeholder="Your Message"></textarea>
+      </div>
+
       <button class="btn btn--primary btn--full" id="send-btn">Send Message</button>
     </div>
 
@@ -178,4 +183,6 @@
     <p class="footer-copy">© 2019 Paws &amp; More. All rights reserved.</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-
+  <script src="main.js"></script>
+</body>
+</html>

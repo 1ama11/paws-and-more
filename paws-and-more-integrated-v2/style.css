@@ -320,10 +320,3 @@ footer { text-align: center; padding: var(--space-xl); background-color: var(--p
 .user-menu:hover .user-dropdown {
   display: block;
 }
-
-
-@media (max-width: 768px) {
-  .search-box input {
-    width: 120px;
-  }
-}
