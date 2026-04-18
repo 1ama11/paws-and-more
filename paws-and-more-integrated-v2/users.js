@@ -44,7 +44,9 @@ function logoutUser() {
 
 function findUserByEmail(email) {
   const users = getUsers();
-  return users.find((user) => user.email === email);
+  return users.find(
+    (user) => user.email.toLowerCase() === email.toLowerCase()
+  );
 }
 
 function addUser(newUser) {
@@ -65,6 +67,30 @@ function updateUser(updatedUser) {
 }
 
 // ===============================
+// VALIDATION HELPERS
+// ===============================
+
+function showMessage(elementId, message, type) {
+  const target = document.getElementById(elementId);
+  if (!target) return;
+  target.innerHTML = `<div class="message ${type}">${message}</div>`;
+}
+
+function isValidEmail(email) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailPattern.test(email);
+}
+
+function isValidPhone(phone) {
+  const phonePattern = /^\d{11}$/;
+  return phonePattern.test(phone);
+}
+
+function isStrongPassword(password) {
+  return password.length >= 6;
+}
+
+// ===============================
 // REGISTER PAGE
 // ===============================
 
@@ -75,49 +101,52 @@ function setupRegisterForm() {
   registerForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const nameInput = document.getElementById("registerName");
-    const emailInput = document.getElementById("registerEmail");
-    const phoneInput = document.getElementById("registerPhone");
-    const addressInput = document.getElementById("registerAddress");
-    const passwordInput = document.getElementById("registerPassword");
-    const confirmPasswordInput = document.getElementById("registerConfirmPassword");
-    const msg = document.getElementById("registerMessage");
+    const name = document.getElementById("registerName").value.trim();
+    const email = document.getElementById("registerEmail").value.trim();
+    const phone = document.getElementById("registerPhone").value.trim();
+    const address = document.getElementById("registerAddress").value.trim();
+    const password = document.getElementById("registerPassword").value.trim();
+    const confirmPassword = document.getElementById("registerConfirmPassword").value.trim();
 
-    if (
-      !nameInput ||
-      !emailInput ||
-      !phoneInput ||
-      !addressInput ||
-      !passwordInput ||
-      !confirmPasswordInput ||
-      !msg
-    ) {
+    if (!name || !email || !phone || !address || !password || !confirmPassword) {
+      showMessage("registerMessage", "Please complete all fields.", "error");
       return;
     }
 
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim();
-    const address = addressInput.value.trim();
-    const password = passwordInput.value.trim();
-    const confirmPassword = confirmPasswordInput.value.trim();
+    if (name.length < 3) {
+      showMessage("registerMessage", "Full name must be at least 3 characters long.", "error");
+      return;
+    }
 
-    msg.innerHTML = "";
+    if (!isValidEmail(email)) {
+      showMessage("registerMessage", "Please enter a valid email address.", "error");
+      return;
+    }
 
-    if (!name || !email || !phone || !address || !password || !confirmPassword) {
-      msg.innerHTML = `<div class="message error">Please complete all fields.</div>`;
+    if (!isValidPhone(phone)) {
+      showMessage("registerMessage", "Phone number must be exactly 11 digits.", "error");
+      return;
+    }
+
+    if (address.length < 5) {
+      showMessage("registerMessage", "Address must be at least 5 characters long.", "error");
+      return;
+    }
+
+    if (!isStrongPassword(password)) {
+      showMessage("registerMessage", "Password must be at least 6 characters long.", "error");
       return;
     }
 
     if (password !== confirmPassword) {
-      msg.innerHTML = `<div class="message error">Passwords do not match.</div>`;
+      showMessage("registerMessage", "Passwords do not match.", "error");
       return;
     }
 
     const existingUser = findUserByEmail(email);
 
     if (existingUser) {
-      msg.innerHTML = `<div class="message error">This email is already registered.</div>`;
+      showMessage("registerMessage", "This email is already registered.", "error");
       return;
     }
 
@@ -133,7 +162,7 @@ function setupRegisterForm() {
     addUser(newUser);
     setCurrentUser(newUser);
 
-    msg.innerHTML = `<div class="message success">Account created successfully. Redirecting to profile...</div>`;
+    showMessage("registerMessage", "Account created successfully. Redirecting to profile...", "success");
 
     setTimeout(() => {
       window.location.href = "profile.html";
@@ -152,38 +181,35 @@ function setupLoginForm() {
   loginForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const emailInput = document.getElementById("loginEmail");
-    const passwordInput = document.getElementById("loginPassword");
-    const msg = document.getElementById("loginMessage");
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-    if (!emailInput || !passwordInput || !msg) {
+    if (!email || !password) {
+      showMessage("loginMessage", "Please fill in all fields.", "error");
       return;
     }
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    msg.innerHTML = "";
-
-    if (!email || !password) {
-      msg.innerHTML = `<div class="message error">Please fill in all fields.</div>`;
+    if (!isValidEmail(email)) {
+      showMessage("loginMessage", "Please enter a valid email address.", "error");
       return;
     }
 
     const users = getUsers();
 
     const foundUser = users.find(
-      (user) => user.email === email && user.password === password
+      (user) =>
+        user.email.toLowerCase() === email.toLowerCase() &&
+        user.password === password
     );
 
     if (!foundUser) {
-      msg.innerHTML = `<div class="message error">Invalid email or password.</div>`;
+      showMessage("loginMessage", "Invalid email or password.", "error");
       return;
     }
 
     setCurrentUser(foundUser);
 
-    msg.innerHTML = `<div class="message success">Login successful. Redirecting to profile...</div>`;
+    showMessage("loginMessage", "Login successful. Redirecting to profile...", "success");
 
     setTimeout(() => {
       window.location.href = "profile.html";
@@ -242,22 +268,36 @@ function setupProfileForm() {
     const email = document.getElementById("profileEmail").value.trim();
     const phone = document.getElementById("profilePhone").value.trim();
     const address = document.getElementById("profileAddress").value.trim();
-    const msg = document.getElementById("profileMessage");
-
-    msg.innerHTML = "";
 
     if (!name || !email || !phone || !address) {
-      msg.innerHTML = `<div class="message error">Please complete all fields.</div>`;
+      showMessage("profileMessage", "Please complete all fields.", "error");
+      return;
+    }
+
+    if (name.length < 3) {
+      showMessage("profileMessage", "Full name must be at least 3 characters long.", "error");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      showMessage("profileMessage", "Please enter a valid email address.", "error");
+      return;
+    }
+
+    if (!isValidPhone(phone)) {
+      showMessage("profileMessage", "Phone number must be exactly 11 digits.", "error");
       return;
     }
 
     const users = getUsers();
     const emailUsedByAnotherUser = users.find(
-      (user) => user.email === email && user.id !== currentUser.id
+      (user) =>
+        user.email.toLowerCase() === email.toLowerCase() &&
+        user.id !== currentUser.id
     );
 
     if (emailUsedByAnotherUser) {
-      msg.innerHTML = `<div class="message error">This email is already used by another account.</div>`;
+      showMessage("profileMessage", "This email is already used by another account.", "error");
       return;
     }
 
@@ -272,7 +312,7 @@ function setupProfileForm() {
     updateUser(updatedUser);
     loadProfilePage();
 
-    msg.innerHTML = `<div class="message success">Profile updated successfully.</div>`;
+    showMessage("profileMessage", "Profile updated successfully.", "success");
   });
 }
 
@@ -354,6 +394,41 @@ function setupLogoutButton() {
 }
 
 // ===============================
+// AUTH NAVIGATION
+// ===============================
+
+function setupAuthNavigation() {
+  const currentUser = getCurrentUser();
+
+  const loginLinks = document.querySelectorAll('a[href="login.html"]');
+  const registerLinks = document.querySelectorAll('a[href="register.html"]');
+  const profileLinks = document.querySelectorAll('a[href="profile.html"]');
+
+  if (currentUser) {
+    loginLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "profile.html";
+      });
+    });
+
+    registerLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "profile.html";
+      });
+    });
+  } else {
+    profileLinks.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "login.html";
+      });
+    });
+  }
+}
+
+// ===============================
 // APP START
 // ===============================
 
@@ -366,6 +441,7 @@ async function startApp() {
   setupProfileForm();
   loadOrdersPage();
   setupLogoutButton();
+  setupAuthNavigation();
 }
 
 startApp();
