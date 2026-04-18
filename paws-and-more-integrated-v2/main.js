@@ -1,10 +1,14 @@
-/* ── 1. ── */
-document.addEventListener('DOMContentLoaded'), () => {
+/* ============================================================
+   PAWS & MORE — main.js
+   ============================================================ */
+
+/* ── 1. DOM READY ── */
+document.addEventListener('DOMContentLoaded', () => {
 
   /* ── 2. CART BADGE ── */
   updateCartBadge();
 
-    /* ── 3. NEWSLETTER ── */
+  /* ── 3. NEWSLETTER ── */
   const nlBtn   = document.getElementById('nl-btn');
   const nlInput = document.getElementById('nl-email');
 
@@ -30,13 +34,21 @@ document.addEventListener('DOMContentLoaded'), () => {
 
     });
   }
+
   /* ── 4. CONTACT FORM ── */
   const sendBtn = document.getElementById('send-btn');
   if (sendBtn) {
     sendBtn.addEventListener('click', sendMessage);
   }
 
+  /* ── 5. MOBILE NAV ── */
+  const toggle = document.querySelector('.nav-toggle');
+  const nav    = document.querySelector('.main-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  }
 
+});
 
 /* ── CART BADGE ── */
 function updateCartBadge() {
@@ -129,4 +141,4 @@ function sendMessage() {
     btn.textContent = 'Send Message';
     btn.style.backgroundColor = '';
   }, 3000);
-} }
+}
