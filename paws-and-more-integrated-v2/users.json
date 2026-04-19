@@ -22,7 +22,7 @@
         "email": "hana@example.com",
         "phone": "01055555555",
         "address": "Garden City, Egypt",
-        "password": "abcd1"
+        "password": "abcd1234"
     },
     {
         "id": 4,
@@ -30,7 +30,7 @@
         "email": "ali@example.com",
         "phone": "01011111111",
         "address": "Maadi, Egypt",
-        "password": "mnopqr"
+        "password": "aliali123"
     }
   ]
 }
