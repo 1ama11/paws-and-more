@@ -75,7 +75,7 @@ function showView(viewId) {
     }
 }
 
-// Add item to cart using localStorage (matches mainjs)
+// Add item to cart using localStorage
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     const cart = JSON.parse(localStorage.getItem('pawsCart') || '[]');
@@ -90,7 +90,7 @@ function addToCart(productId) {
     localStorage.setItem('pawsCart', JSON.stringify(cart));
     updateCartBadge();
 
-    // Inline button feedback — no alert
+    // Inline button feedback
     const btn = document.getElementById(`btn-${productId}`);
     if (btn) {
         const original = btn.textContent;
@@ -105,7 +105,7 @@ function addToCart(productId) {
     }
 }
 
-// Update the cart badge using localStorage (matches mainjs)
+// Update the cart badge
 function updateCartBadge() {
     const cart  = JSON.parse(localStorage.getItem('pawsCart') || '[]');
     const count = cart.reduce((s, i) => s + i.qty, 0);
@@ -116,6 +116,15 @@ function updateCartBadge() {
     }
 }
 
+// Remove a single item from cart
+function removeFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('pawsCart') || '[]');
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('pawsCart', JSON.stringify(cart));
+    updateCartBadge();
+    renderCart();
+}
+
 // Display items in the cart view
 function renderCart() {
     const cartContainer = document.getElementById("cart-items");
@@ -124,15 +133,21 @@ function renderCart() {
     let total = 0;
 
     if (cart.length === 0) {
-        cartContainer.innerHTML = `<p style="text-align:center;color:var(--text-muted);padding:var(--space-xl);">Your cart is empty.</p>`;
+        cartContainer.innerHTML = `<p style="text-align:center;color:var(--text-muted);padding:var(--space-xl);">Your cart is empty. 🐾</p>`;
     } else {
         cart.forEach(item => {
             total += item.price * item.qty;
             const cartItem = document.createElement("div");
             cartItem.className = "cart-item";
             cartItem.innerHTML = `
-                <span>${item.name} ${item.qty > 1 ? `x${item.qty}` : ''}</span>
-                <span>$${(item.price * item.qty).toFixed(2)}</span>
+                <span style="flex:1;font-weight:600;">${item.name} ${item.qty > 1 ? `<span style="color:var(--text-muted);font-weight:400;">x${item.qty}</span>` : ''}</span>
+                <span style="font-weight:700;color:var(--accent);margin-right:16px;">$${(item.price * item.qty).toFixed(2)}</span>
+                <button 
+                    onclick="removeFromCart(${item.id})"
+                    style="background:none;border:1px solid #e74c3c;color:#e74c3c;border-radius:6px;padding:5px 12px;cursor:pointer;font-size:0.82rem;transition:all 0.2s;"
+                    onmouseover="this.style.background='#e74c3c';this.style.color='#fff';"
+                    onmouseout="this.style.background='none';this.style.color='#e74c3c';"
+                >Remove</button>
             `;
             cartContainer.appendChild(cartItem);
         });
@@ -148,12 +163,10 @@ function processCheckout(event) {
     const donate = document.getElementById('donate').checked;
     const btn    = event.submitter || event.target.querySelector('button[type="submit"]');
 
-    // Clear cart from localStorage
     localStorage.removeItem('pawsCart');
     updateCartBadge();
     event.target.reset();
 
-    // Inline feedback — no alert
     if (btn) {
         btn.textContent = donate
             ? '✓ Order placed! Thanks for your donation 🐾'

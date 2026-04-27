@@ -220,6 +220,7 @@ main {
   transition: transform var(--transition), box-shadow var(--transition);
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 .product-card:hover,
 .card--product:hover {
@@ -236,8 +237,10 @@ main {
 /* Fallback for direct img inside product-card (no wrapper) */
 .product-card > img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 220px;
+  object-fit: contain;
+  background-color: #fff;
+  padding: 12px;
   transition: transform 400ms ease;
 }
 
@@ -308,13 +311,13 @@ button.primary-btn {
 .btn:active,
 button.primary-btn:active { transform: translateY(1px); }
 
-/* Primary (default for primary-btn) */
 .btn--primary,
 button.primary-btn {
   background-color: var(--accent);
   color: var(--text-on-dark);
-  width: 100%;
-  margin-top: var(--space-sm);
+  width: calc(100% - 32px);
+  margin: var(--space-sm) 16px var(--space-md);
+  display: block;
 }
 .btn--primary:hover,
 button.primary-btn:hover {
