@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/1ama11/paws-and-more#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "ejs": "^6.0.1",
     "express": "^5.2.1",
+    "express-fileupload": "^1.5.2",
+    "express-session": "^1.19.0",
     "mongoose": "^9.6.3"
   }
 }
