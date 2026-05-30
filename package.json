@@ -1,0 +1,25 @@
+{
+  "name": "paws-and-more",
+  "version": "1.0.0",
+  "description": "Integrated project build combining homepage, shop, adoption, and user management pages. Open `index.html` to start.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1ama11/paws-and-more.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1ama11/paws-and-more/issues"
+  },
+  "homepage": "https://github.com/1ama11/paws-and-more#readme",
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.3"
+  }
+}
