@@ -1,0 +1,142 @@
+<%- include('partials/header', { title: 'Shop', active: 'shop', extraCss: ['shop.css'] }) %>
+  <script>window.IS_LOGGED_IN = <%= user ? 'true' : 'false' %>;</script>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Pet Shop</span>
+      <h1>Everything Your<br>Pet Needs 🐾</h1>
+      <p>Browse our curated range of premium food, toys, and accessories for your furry friends.</p>
+      <div class="hero-buttons">
+        <a href="#shop" class="btn btn--primary">Shop Now</a>
+      </div>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">🐾</div>
+  </section>
+
+  <!-- PET FACT BAR -->
+  <div id="pet-fact-bar" style="background:#5c4a1e;color:white;text-align:center;padding:12px 24px;font-size:0.95rem;">
+    🐾 <span id="pet-fact-text">Loading pet fact...</span>
+    <button onclick="loadFact()" style="margin-left:12px;background:white;color:#5c4a1e;border:none;border-radius:6px;padding:4px 12px;cursor:pointer;font-weight:600;">New Fact</button>
+  </div>
+
+  <!-- SHOP VIEW -->
+  <section class="section section--light view active" id="shop-view">
+    <div class="section-header" id="shop">
+      <h2>Shop Pet Supplies</h2>
+      <p>Quality products for dogs, cats, and all your other beloved pets</p>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+      <button class="filter-btn" onclick="filterProducts('dogs')">🐕 Dogs</button>
+      <button class="filter-btn" onclick="filterProducts('cats')">🐈 Cats</button>
+      <button class="filter-btn" onclick="filterProducts('other')">🐹 Other Pets</button>
+      <button class="filter-btn" onclick="filterProducts('best-selling')">⭐ Best Selling</button>
+    </div>
+
+    <div id="product-grid" class="card-container"></div>
+  </section>
+
+  <!-- CART VIEW -->
+  <section class="section section--light view" id="cart-view" style="display:none;">
+    <div class="section-header">
+      <h2>Your Cart 🛒</h2>
+      <p>Review your items before checking out</p>
+    </div>
+
+    <div style="max-width:700px;margin:0 auto;">
+      <div id="cart-items"></div>
+
+      <div class="cart-summary" style="text-align:right;margin-top:24px;padding-top:16px;border-top:2px solid var(--border-color);">
+        <p style="font-size:1.3rem;font-weight:700;color:var(--accent-color);margin-bottom:16px;">
+          Total: $<span id="cart-total">0.00</span>
+        </p>
+        <div style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
+          <button class="btn" style="background-color:var(--muted-text);" onclick="showView('shop-view')">← Keep Shopping</button>
+          <button class="btn" onclick="showView('checkout-view')">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT VIEW -->
+  <section class="section section--light view" id="checkout-view" style="display:none;">
+    <div class="section-header">
+      <h2>Checkout</h2>
+      <p>Almost there — fill in your details to complete your order</p>
+    </div>
+
+    <div style="max-width:600px;margin:0 auto;">
+      <form id="checkout-form" onsubmit="processCheckout(event)" class="adoption-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label>Shipping Address</label>
+          <input type="text" required placeholder="123 Pet Lane">
+        </div>
+        <div class="form-group">
+          <label>Credit Card Number</label>
+          <input type="text"
+                 name="cardNumber"
+                 required
+                 pattern="\d{16}"
+                 inputmode="numeric"
+                 maxlength="16"
+                 minlength="16"
+                 title="Please enter a 16-digit card number"
+                 placeholder="16-digit card number">
+        </div>
+
+        <div style="background:var(--card-bg);border:1px solid var(--border-color);border-radius:8px;padding:16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+          <input type="checkbox" id="donate" style="width:auto;accent-color:var(--accent-color);">
+          <label for="donate" style="margin:0;font-weight:600;cursor:pointer;">Add $1 to support our adoption centre! 🐶🐱</label>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <button type="button" class="btn" style="background-color:var(--muted-text);" onclick="showView('cart-view')">← Back to Cart</button>
+          <button type="submit" class="btn">Place Order</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- WHY SHOP WITH US -->
+  <section class="section section--primary">
+    <div class="section-header">
+      <h2>Why Shop With Us?</h2>
+      <p>We care about pets as much as you do</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><span class="why-icon">🚚</span><h4>Fast Delivery</h4><p>Orders dispatched within 24 hours, straight to your door.</p></div>
+      <div class="why-item"><span class="why-icon">⭐</span><h4>Premium Quality</h4><p>Every product is vet-approved and carefully selected.</p></div>
+      <div class="why-item"><span class="why-icon">🐾</span><h4>Supports Adoption</h4><p>A portion of every sale goes to our adoption centre.</p></div>
+      <div class="why-item"><span class="why-icon">💬</span><h4>Expert Advice</h4><p>Our team is always on hand to help you choose the right product.</p></div>
+    </div>
+  </section>
+
+  <script>
+  function showView(viewId) {
+    document.querySelectorAll('.view').forEach(v => {
+      v.classList.remove('active');
+      v.style.display = 'none';
+    });
+    const target = document.getElementById(viewId);
+    target.style.display = 'block';
+    target.classList.add('active');
+    if (viewId === 'cart-view') renderCart();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const hash = viewId === 'shop-view' ? '' : '#' + viewId.replace('-view', '');
+    history.replaceState(null, '', hash || window.location.pathname);
+  }
+
+  window.addEventListener('load', () => {
+    const hash = window.location.hash;
+    if (hash === '#cart')     showView('cart-view');
+    else if (hash === '#checkout') showView('checkout-view');
+  });
+  </script>
+
+<%- include('partials/footer', { extraJs: ['shop.js'] }) %>

@@ -1,0 +1,33 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>Adoption Applications</h1>
+
+    <% if (applications.length === 0) { %>
+        <p>No applications yet.</p>
+    <% } else { %>
+        <% applications.forEach(app => { %>
+        <div class="pet-card" style="margin-bottom:20px; text-align:left;">
+            <h3><%= app.petName %></h3>
+            <p><strong>Applicant:</strong> <%= app.fullName %></p>
+            <p><strong>Email:</strong> <%= app.email %></p>
+            <p><strong>Home Type:</strong> <%= app.homeType %></p>
+            <p><strong>Other Pets:</strong> <%= app.hasOtherPets %></p>
+            <p><strong>Message:</strong> <%= app.message || 'No message' %></p>
+            <p><strong>Status:</strong> <%= app.status %></p>
+            <p><strong>Date:</strong> <%= app.createdAt.toDateString() %></p>
+
+            <form action="/admin/applications/<%= app._id %>" method="POST" style="margin-top:10px;">
+                <select name="status" class="custom-select" style="margin-bottom:10px;">
+                    <option value="pending" <%= app.status === 'pending' ? 'selected' : '' %>>Pending</option>
+                    <option value="approved" <%= app.status === 'approved' ? 'selected' : '' %>>Approved</option>
+                    <option value="rejected" <%= app.status === 'rejected' ? 'selected' : '' %>>Rejected</option>
+                </select>
+                <button type="submit" class="btn">Update Status</button>
+            </form>
+        </div>
+        <% }) %>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>

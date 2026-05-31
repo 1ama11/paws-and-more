@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <h1>Meet Our Furry Friends</h1>
+    <p><b>Click "View Details" to learn more about each pet!</b></p>
+
+    <div style="text-align:center; margin-bottom:20px;">
+        <a href="/adoption/quiz" class="btn">🐾 Take the Pet Matching Quiz</a>
+    </div>
+
+    <input type="text" id="searchBar" placeholder="Search by name, breed or type..." class="custom-select" style="margin-bottom:20px; width:100%;">
+
+    <div class="pet-grid">
+        <% pets.forEach(pet => { %>
+        <div class="pet-card" data-type="<%= pet.type %>">
+            <img src="/images/<%= pet.imageUrl %>" alt="<%= pet.name %>">
+            <h3><%= pet.name %></h3>
+            <p><u><%= pet.breed %></u></p>
+            <a href="/pets/<%= pet.name %>" class="btn">View Details</a>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+<script>
+    document.getElementById('searchBar').addEventListener('input', function() {
+        const search = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.pet-card');
+
+        cards.forEach(card => {
+            const name = card.querySelector('h3').innerText.toLowerCase();
+            const breed = card.querySelector('p').innerText.toLowerCase();
+            const type = card.dataset.type.toLowerCase();
+
+            if (name.includes(search) || breed.includes(search) || type.includes(search)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<%- include('partials/footer') %>

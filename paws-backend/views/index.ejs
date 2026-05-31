@@ -1,0 +1,173 @@
+<%- include('partials/header', { title: 'Home', active: 'home' }) %>
+
+  <style>
+    .hero--home { padding: 100px var(--space-xl) 80px; }
+    .hero--home h1 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); }
+  </style>
+
+  <!-- HERO -->
+  <section class="hero hero--home">
+    <div class="hero-inner">
+      <span class="hero-tag">Welcome to Paws &amp; More 🐾</span>
+      <h1>Your Pet's<br>Happy Place 🐕🐈</h1>
+      <p>Premium products for cats &amp; dogs, plus a loving adoption centre — everything your furry family needs, all in one place.</p>
+      <div class="hero-buttons">
+        <a href="/shop" class="btn btn--primary">Shop Now</a>
+        <a href="/adoption" class="btn btn--primary">Adopt a Pet</a>
+        <a href="/adoption/list" class="btn btn--primary">View Adoptable Pets</a>
+      </div>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">🐾</div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section section--primary">
+    <div class="section-header">
+      <h2>Why Choose Us?</h2>
+      <p>We put your pet first, always</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><span class="why-icon">🚚</span><h4>Free Shipping</h4><p>On all orders over $40 — delivered fast to your door.</p></div>
+      <div class="why-item"><span class="why-icon">🌿</span><h4>Natural Products</h4><p>Vet-approved, clean ingredients with no nasty additives.</p></div>
+      <div class="why-item"><span class="why-icon">🏅</span><h4>Expert Curated</h4><p>Every product hand-picked by our in-house pet specialists.</p></div>
+      <div class="why-item"><span class="why-icon">💛</span><h4>Happy Pet Guarantee</h4><p>14-day hassle-free returns — no questions asked.</p></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section section--light">
+    <div class="section-header">
+      <h2>What We Offer</h2>
+      <p>Everything cats and dogs need — and a chance to adopt one</p>
+    </div>
+    <div class="card-container">
+      <div class="card card--category">
+        <span class="card-icon">🐈</span>
+        <h3>Cat Products</h3>
+        <p>Food, toys, beds &amp; accessories for your feline friend</p>
+        <a href="/shop" class="btn btn--sm">Browse Cats</a>
+      </div>
+      <div class="card card--category">
+        <span class="card-icon">🐕</span>
+        <h3>Dog Products</h3>
+        <p>Food, toys, leads &amp; accessories for your pup</p>
+        <a href="/shop" class="btn btn--sm">Browse Dogs</a>
+      </div>
+      <div class="card card--category">
+        <span class="card-icon">🏠</span>
+        <h3>Adopt a Pet</h3>
+        <p>Give a loving cat or dog their forever home</p>
+        <a href="/adoption" class="btn btn--sm">See Pets</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section section--primary">
+    <div class="section-header">
+      <h2>Customer Favourites ⭐</h2>
+      <p>Our best-selling products this month</p>
+    </div>
+    <div class="card-container">
+      <div class="card card--product">
+        <div class="card-img-wrap">
+          <img src="/uploads/1780153477016.jpeg" alt="Luxury Cat Tree">
+          <span class="badge badge--cat">Cat</span>
+        </div>
+        <div class="card-body">
+          <h3>Luxury Cat Tree</h3>
+          <p>a stylish, high-quality space for cats to climb and relax.</p>
+          <div class="card-footer">
+            <span class="price">$120.00</span>
+            <a href="/shop" class="btn btn--sm">View in Shop</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card--product">
+        <div class="card-img-wrap">
+          <img src="/uploads/1780153444708.jpeg" alt="Squeaky Bone Toy">
+          <span class="badge badge--dog">Dog</span>
+        </div>
+        <div class="card-body">
+          <h3>Squeaky Bone Toy</h3>
+          <p>keeps dogs entertained with fun sounds while encouraging active play.</p>
+          <div class="card-footer">
+            <span class="price">$8.50</span>
+            <a href="/shop" class="btn btn--sm">View in Shop</a>
+          </div>
+        </div>
+      </div>
+      <div class="card card--product">
+        <div class="card-img-wrap">
+          <img src="/uploads/1780153532861.jpeg" alt="Dog Leash &amp; Collar">
+          <span class="badge badge--new">New</span>
+        </div>
+        <div class="card-body">
+          <h3>Dog Leash &amp; Collar</h3>
+          <p>provides control, safety, and comfort during walks.</p>
+          <div class="card-footer">
+            <span class="price">$18.99</span>
+            <a href="/shop" class="btn btn--sm">View in Shop</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section--light">
+    <div class="section-header">
+      <h2>Happy Pet Parents 💬</h2>
+      <p>What our customers are saying</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"My dog Max loves the premium food. His coat has never looked better and he's so much more energetic!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🐕</div>
+          <div><div class="testimonial-name">Sarah M.</div><div class="testimonial-pet">Owner of Max, Golden Retriever</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Fast delivery and the cat tree is amazing! Luna spends all day on it — best purchase I've made."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🐈</div>
+          <div><div class="testimonial-name">James K.</div><div class="testimonial-pet">Owner of Luna, Tabby Cat</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"We adopted our beagle Biscuit through Paws &amp; More — the whole process was smooth and the team was so helpful."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🐶</div>
+          <div><div class="testimonial-name">Amira H.</div><div class="testimonial-pet">Owner of Biscuit, Beagle</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ADOPTION BANNER -->
+  <section class="section section--dark adoption-banner">
+    <div class="adoption-banner-inner">
+      <h2>Give a Pet a Forever Home 🐾</h2>
+      <p>Dozens of loving cats and dogs are waiting to meet their perfect family. Browse our adoption listings and change a life today.</p>
+      <div class="hero-buttons">
+        <a href="/adoption" class="btn btn--primary">See Available Pets</a>
+        <a href="/adoption" class="btn btn--outline">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section section--green newsletter">
+    <h2>Stay in the Loop 📬</h2>
+    <p>Get exclusive deals, pet care tips, and new arrivals straight to your inbox.</p>
+    <div class="newsletter-form">
+      <input type="email" id="nl-email" placeholder="Your email address…" aria-label="Email address">
+      <button class="btn btn--primary" id="nl-btn" type="button">Subscribe</button>
+    </div>
+  </section>
+
+<%- include('partials/footer') %>

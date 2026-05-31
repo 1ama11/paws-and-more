@@ -1,0 +1,58 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>Edit Pet</h1>
+
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div class="error-message" style="display:block; padding:10px; background:#ffe4e4; border-radius:6px; margin-bottom:15px; color:#a00;"><%= error %></div>
+    <% } %>
+
+    <form action="/admin/pets/edit/<%= pet._id %>" method="POST" enctype="multipart/form-data" class="adoption-form">
+        <input type="hidden" name="oldImage" value="<%= pet.imageUrl %>">
+
+        <div class="form-group">
+            <label>Pet Name:</label>
+            <input type="text" name="name" required value="<%= pet.name %>">
+        </div>
+
+        <div class="form-group">
+            <label>Breed:</label>
+            <input type="text" name="breed" required value="<%= pet.breed %>">
+        </div>
+
+        <div class="form-group">
+            <label>Age:</label>
+            <input type="text" name="age" required value="<%= pet.age %>">
+        </div>
+
+        <div class="form-group">
+            <label>Type:</label>
+            <select name="type" required class="custom-select">
+                <option value="" disabled>Select type</option>
+                <option value="dog" <%= pet.type === 'dog' ? 'selected' : '' %>>Dog</option>
+                <option value="cat" <%= pet.type === 'cat' ? 'selected' : '' %>>Cat</option>
+                <option value="rabbit" <%= pet.type === 'rabbit' ? 'selected' : '' %>>Rabbit</option>
+                <option value="bird" <%= pet.type === 'bird' ? 'selected' : '' %>>Bird</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Description:</label>
+            <textarea name="desc" required><%= pet.desc %></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Current Image:</label>
+            <img src="/images/<%= pet.imageUrl %>" style="width:100px; border-radius:8px; margin-bottom:10px;">
+            <label>Upload New Image (optional):</label>
+            <input type="file" name="image" accept="image/*">
+        </div>
+
+        <div style="display:flex; gap:15px;">
+            <button type="submit" class="btn">Save Changes</button>
+            <a href="/admin/pets" class="btn" style="background-color:#4f4f4a;">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<%- include('../partials/footer') %>

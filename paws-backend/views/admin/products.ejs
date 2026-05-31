@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>Manage Products</h1>
+    <a href="/admin/products/add" class="btn" style="margin-bottom:20px; display:inline-block;">+ Add New Product</a>
+
+    <div class="pet-grid">
+        <% products.forEach(function(product) { %>
+        <div class="pet-card">
+            <% if (product.image) { %>
+                <img src="/uploads/<%= product.image %>" alt="<%= product.name %>">
+            <% } else { %>
+                <div style="height:120px; background:var(--body-bg); border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:15px; color:var(--muted-text);">No image</div>
+            <% } %>
+            <h3><%= product.name %></h3>
+            <p><u><%= product.category %></u></p>
+            <p style="font-weight:700; color:var(--accent-color);">$<%= product.price.toFixed(2) %></p>
+            <p style="font-size:0.85rem; color:var(--muted-text);">Stock: <%= product.stock %></p>
+
+            <div style="display:flex; gap:10px; margin-top:10px;">
+                <a href="/admin/products/edit/<%= product._id %>" class="btn">Edit</a>
+                <form action="/admin/products/delete/<%= product._id %>" method="POST"
+                      onsubmit="return confirm('Delete <%= product.name %>?');">
+                    <button type="submit" class="btn" style="background-color:#d90429;">Delete</button>
+                </form>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+    <% if (products.length === 0) { %>
+        <p style="text-align:center; color:var(--muted-text); margin-top:20px;">No products yet. Add one above.</p>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>

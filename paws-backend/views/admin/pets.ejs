@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>Manage Pets</h1>
+    <a href="/admin/pets/add" class="btn" style="margin-bottom:20px; display:inline-block;">+ Add New Pet</a>
+
+    <div class="pet-grid">
+        <% pets.forEach(pet => { %>
+        <div class="pet-card">
+            <img src="/images/<%= pet.imageUrl %>" alt="<%= pet.name %>">
+            <h3><%= pet.name %></h3>
+            <p><u><%= pet.breed %></u></p>
+            <p><%= pet.isAvailable ? 'Available' : 'Adopted' %></p>
+
+            <div style="display:flex; gap:10px; margin-top:10px;">
+                <a href="/admin/pets/edit/<%= pet._id %>" class="btn">Edit</a>
+                <form action="/admin/pets/delete/<%= pet._id %>" method="POST">
+                    <button type="submit" class="btn" style="background-color:#d90429;">Delete</button>
+                </form>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

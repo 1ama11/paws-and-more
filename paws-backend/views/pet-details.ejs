@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <div class="pet-details-layout">
+        <div class="pet-info">
+            <h2><%= pet.name %></h2>
+            <p><strong>Breed:</strong> <%= pet.breed %></p>
+            <p><strong>Age:</strong> <%= pet.age %></p>
+            <br>
+            <p><%= pet.desc %></p>
+            <br>
+            <% if(pet.isAvailable) { %>
+                <a href="/adopt?pet=<%= pet.name %>" class="btn">Adopt Now</a>
+            <% } else { %>
+                <p style="color: red;">This pet has been adopted!</p>
+            <% } %>
+
+            <br><br>
+
+            <div class="pet-card" id="factBox" style="text-align:left;">
+                <h3>🐾 Did you know?</h3>
+                <p id="factText">Loading fact...</p>
+            </div>
+        </div>
+
+        <% if (breedInfo) { %>
+        <div class="pet-info" style="margin-top:24px; border-top:1px solid var(--border-color); padding-top:20px;">
+            <h3>More About This Breed</h3>
+            <% if (breedInfo.temperament) { %>
+                <p><strong>Temperament:</strong> <%= breedInfo.temperament %></p>
+            <% } %>
+            <% if (breedInfo.life_span) { %>
+                <p><strong>Life Span:</strong> <%= breedInfo.life_span %></p>
+            <% } %>
+            <% if (breedInfo.weight && breedInfo.weight.metric) { %>
+                <p><strong>Weight:</strong> <%= breedInfo.weight.metric %> kg</p>
+            <% } %>
+            <% if (breedInfo.bred_for) { %>
+                <p><strong>Bred For:</strong> <%= breedInfo.bred_for %></p>
+            <% } else if (breedInfo.origin) { %>
+                <p><strong>Origin:</strong> <%= breedInfo.origin %></p>
+            <% } %>
+            <% if (breedInfo.description) { %>
+                <p><strong>Description:</strong> <%= breedInfo.description %></p>
+            <% } %>
+        </div>
+        <% } %>
+
+    </div>
+</div>
+
+<script>
+    const petType = "<%= pet.type %>";
+
+    let apiUrl = '';
+    if (petType === 'dog') {
+        apiUrl = 'https://dogapi.dog/api/v2/facts';
+    } else if (petType === 'cat') {
+        apiUrl = 'https://catfact.ninja/fact';
+    } else {
+        apiUrl = 'https://dogapi.dog/api/v2/facts';
+    }
+
+    fetch(apiUrl)
+        .then(res => res.json())
+        .then(data => {
+            let fact = '';
+            if (petType === 'cat') {
+                fact = data.fact;
+            } else {
+                fact = data.data[0].attributes.body;
+            }
+            document.getElementById('factText').innerText = fact;
+        })
+        .catch(err => {
+            document.getElementById('factText').innerText = 'Could not load fact.';
+        });
+</script>
+
+<%- include('partials/footer') %>

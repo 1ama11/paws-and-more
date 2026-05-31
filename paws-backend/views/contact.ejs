@@ -1,0 +1,63 @@
+<%- include('partials/header', { title: 'Contact', active: 'contact' }) %>
+
+<!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Get In Touch</span>
+      <h1>Contact Us 📞</h1>
+      <p>We'd love to hear from you! Whether you have a question or want to adopt a pet.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn--primary">Send a Message</a>
+      </div>
+    </div>
+    <div class="hero-paw-bg" aria-hidden="true">🐾</div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-container" id="contact">
+
+    <!-- INFO -->
+    <div class="contact-info">
+      <div class="contact-box">
+        <h3>📍 Address</h3>
+        <p>Cairo, Egypt</p>
+      </div>
+      <div class="contact-box">
+        <h3>📧 Email</h3>
+        <p><a href="mailto:hello@pawsandmore.com">hello@pawsandmore.com</a></p>
+      </div>
+      <div class="contact-box">
+        <h3>📞 Phone</h3>
+        <p>+20 123 456 7890</p>
+      </div>
+      <div class="contact-box">
+        <h3>⏰ Working Hours</h3>
+        <p>Sun – Thu: 9AM – 6PM</p>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form">
+      <h2>Send a Message 💬</h2>
+
+      <!-- Error banner injected here by main.js -->
+      <div id="form-error-banner"></div>
+
+      <div class="field-wrap">
+        <input type="text" id="contact-name" placeholder="Your Name">
+      </div>
+      <div class="field-wrap">
+        <input type="email" id="contact-email" placeholder="Your Email">
+      </div>
+      <div class="field-wrap">
+        <textarea id="contact-message" placeholder="Your Message"></textarea>
+      </div>
+
+      <button class="btn btn--primary btn--full" id="send-btn">Send Message</button>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+<%- include('partials/footer') %>

@@ -1,0 +1,59 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>Admin Dashboard</h1>
+
+    <div class="pet-grid">
+        <div class="pet-card">
+            <h3>Total Pets</h3>
+            <p><%= totalPets %></p>
+        </div>
+
+        <div class="pet-card">
+            <h3>Available Pets</h3>
+            <p><%= availablePets %></p>
+        </div>
+
+        <div class="pet-card">
+            <h3>Total Applications</h3>
+            <p><%= totalApplications %></p>
+        </div>
+
+        <div class="pet-card">
+            <h3>Pending Applications</h3>
+            <p><%= pendingApplications %></p>
+        </div>
+
+        <div class="pet-card">
+            <h3>Total Products</h3>
+            <p><%= totalProducts %></p>
+        </div>
+
+        <div class="pet-card">
+            <h3>Total Orders</h3>
+            <p><%= totalOrders %></p>
+        </div>
+
+        <div class="pet-card">
+            <h3>Total Users</h3>
+            <p><%= totalUsers %></p>
+        </div>
+
+        <div class="pet-card">
+            <h3>Customers</h3>
+            <p><%= totalCustomers %></p>
+        </div>
+    </div>
+
+    <br>
+
+    <div style="display:flex; gap:15px; margin-top:20px; flex-wrap:wrap;">
+        <a href="/admin/pets" class="btn">Manage Pets</a>
+        <a href="/admin/applications" class="btn">View Applications</a>
+        <a href="/admin/products" class="btn">Manage Products</a>
+        <a href="/admin/orders" class="btn">View Orders</a>
+        <a href="/admin/users" class="btn">Manage Users</a>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

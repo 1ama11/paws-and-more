@@ -1,0 +1,20 @@
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-logo">Paws &amp; More 🐾</p>
+    <nav class="footer-nav">
+      <a href="/">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/adoption">Adoption</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/policy">Policy</a>
+    </nav>
+    <p class="footer-copy">&copy; 2026 Paws &amp; More. All rights reserved.</p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <% if (typeof extraJs !== 'undefined') { %>
+    <% extraJs.forEach(function(src){ %><script src="/js/<%= src %>"></script><% }) %>
+  <% } %>
+</body>
+</html>
