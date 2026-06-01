@@ -18,10 +18,10 @@ const pets = [
 ];
 
 const products = [
-    { name: 'Premium Dog Kibble',   description: 'High-protein dry food for adult dogs, vet-approved formula.',           price: 24.99,  stock: 50,  category: 'dog', image: '1780153444708.jpeg' },
-    { name: 'Luxury Cat Tree',      description: 'Multi-level climbing frame with sisal scratching posts and cosy beds.', price: 120.00, stock: 15,  category: 'cat', image: '1780153477016.jpeg' },
-    { name: 'Squeaky Bone Toy',     description: 'Durable rubber chew toy that keeps dogs entertained for hours.',        price: 8.50,   stock: 100, category: 'dog', image: '1780153532861.jpeg' },
-    { name: 'Cat Nip & Toy Bundle', description: 'Organic catnip pouch plus feather wand — keeps cats playful all day.', price: 12.99,  stock: 60,  category: 'cat', image: '1780153633353.jpeg' }
+    { name: 'Premium Dog Kibble',   description: 'High-protein dry food for adult dogs, vet-approved formula.',           price: 24.99,  stock: 50,  category: 'dog', image: 'dogkibble.jpg' },
+    { name: 'Luxury Cat Tree',      description: 'Multi-level climbing frame with sisal scratching posts and cosy beds.', price: 120.00, stock: 15,  category: 'cat', image: 'cattree.jpg' },
+    { name: 'Squeaky Bone Toy',     description: 'Durable rubber chew toy that keeps dogs entertained for hours.',        price: 8.50,   stock: 100, category: 'dog', image: 'squeakytoy.jpg' },
+    { name: 'Cat Nip & Toy Bundle', description: 'Organic catnip pouch plus feather wand — keeps cats playful all day.', price: 12.99,  stock: 60,  category: 'cat', image: 'catnipandtoybundle.jpg' }
 ];
 
 async function seed() {
