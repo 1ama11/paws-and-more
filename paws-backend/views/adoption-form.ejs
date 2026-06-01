@@ -1,0 +1,120 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <h1>Adoption Application</h1>
+    <form id="adoptForm" class="adoption-form">
+        <div class="form-group">
+            <label>Full Name:</label>
+            <input type="text" id="fullName" required placeholder="Your full name">
+            <span id="nameError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Email Address:</label>
+            <input type="email" id="email" required placeholder="abc@gmail.com">
+            <span id="emailError" class="error-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Home Type:</label>
+            <select id="homeType" required class="custom-select">
+                <option value="" disabled selected>Select your home type</option>
+                <option value="apartment">Apartment</option>
+                <option value="house">House</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Do you have other pets?</label>
+            <div class="radio-options">
+                <label class="radio-container">
+                    <input type="radio" name="otherPets" value="no" checked> No
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="otherPets" value="yes"> Yes
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Pet Name:</label>
+            <input type="text" id="petName" value="<%= petName %>" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Message (Optional)</label>
+            <textarea id="message" placeholder="Tell us why..."></textarea>
+        </div>
+
+        <button type="submit" class="btn">Submit Application</button>
+    </form>
+</div>
+
+<div id="successModal">
+    <div class="modal-box">
+        <h2>Application Received! 🐾</h2>
+        <p>Thank you! We will contact you soon.</p>
+        <br>
+        <button onclick="window.location.href='/pets'" class="btn">Back to Home</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('adoptForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const homeType = document.getElementById('homeType').value;
+        const otherPets = document.querySelector('input[name="otherPets"]:checked').value;
+        const petName = document.getElementById('petName').value;
+        const message = document.getElementById('message').value;
+
+        const nameError = document.getElementById('nameError');
+        const emailError = document.getElementById('emailError');
+
+        nameError.style.display = 'none';
+        emailError.style.display = 'none';
+
+        let isValid = true;
+
+        // Name validation (no numbers)
+        if (/\d/.test(fullName)) {
+            nameError.innerText = "Name cannot contain numbers.";
+            nameError.style.display = 'block';
+            isValid = false;
+        }
+
+        // Email validation
+        const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+        if (!emailRegex.test(email)) {
+            emailError.innerText = "Please enter a valid email address.";
+            emailError.style.display = 'block';
+            isValid = false;
+        }
+
+        if (isValid) {
+            try {
+                const response = await fetch('/adopt', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ fullName, email, homeType, otherPets, petName, message })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    document.getElementById('successModal').style.display = 'flex';
+                    document.getElementById('adoptForm').reset();
+                    document.getElementById('petName').value = petName; // keep pet name
+                } else {
+                    alert('Error: ' + (data.error || 'Something went wrong'));
+                }
+            } catch (err) {
+                alert('Network error. Please try again.');
+            }
+        }
+    });
+</script>
+
+<%- include('partials/footer') %>

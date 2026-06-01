@@ -1,0 +1,102 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <h1>🐾 Pet Matching Quiz</h1>
+    <p style="text-align:center; margin-bottom:24px;">Answer 5 quick questions and we'll find your perfect companion!</p>
+
+    <form class="adoption-form" action="/adoption/quiz/results" method="POST">
+
+        <div class="form-group">
+            <label>1. What type of home do you live in?</label>
+            <div class="radio-options">
+                <label class="radio-container">
+                    <input type="radio" name="homeType" value="apartment" required>
+                    Apartment
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="homeType" value="small">
+                    Small house
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="homeType" value="large">
+                    Large house with yard
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>2. How many hours are you home per day?</label>
+            <div class="radio-options">
+                <label class="radio-container">
+                    <input type="radio" name="hoursHome" value="under4" required>
+                    Under 4 hours
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="hoursHome" value="4to8">
+                    4 to 8 hours
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="hoursHome" value="over8">
+                    Over 8 hours
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>3. What energy level do you prefer in a pet?</label>
+            <div class="radio-options">
+                <label class="radio-container">
+                    <input type="radio" name="energy" value="calm" required>
+                    Calm companion
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="energy" value="balanced">
+                    Balanced
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="energy" value="active">
+                    Very active
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>4. Do you have small children at home?</label>
+            <div class="radio-options">
+                <label class="radio-container">
+                    <input type="radio" name="hasKids" value="yes" required>
+                    Yes
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="hasKids" value="no">
+                    No
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>5. How would you describe your pet ownership experience?</label>
+            <div class="radio-options">
+                <label class="radio-container">
+                    <input type="radio" name="experience" value="first" required>
+                    First-time owner
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="experience" value="some">
+                    Some experience
+                </label>
+                <label class="radio-container">
+                    <input type="radio" name="experience" value="experienced">
+                    Experienced
+                </label>
+            </div>
+        </div>
+
+        <div style="text-align:center;">
+            <button type="submit" class="btn">Find My Match &rarr;</button>
+        </div>
+
+    </form>
+</div>
+
+<%- include('partials/footer') %>

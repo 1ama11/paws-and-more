@@ -1,0 +1,36 @@
+<%- include('../partials/header', { title: userDoc.name }) %>
+
+<div class="container" style="max-width: 600px;">
+  <a href="/admin/users" style="display:inline-block; margin-bottom:15px;">← Back to Users</a>
+
+  <div class="pet-card" style="text-align:left;">
+    <h1><%= userDoc.name %></h1>
+
+    <p>
+      <strong>Role:</strong>
+      <% if (userDoc.type === 'admin') { %>
+        <span style="padding:3px 10px; border-radius:12px; color:white; background:#28a745;"><%= userDoc.type %></span>
+      <% } else { %>
+        <span style="padding:3px 10px; border-radius:12px; color:white; background:#007bff;"><%= userDoc.type %></span>
+      <% } %>
+    </p>
+    <p><strong>Email:</strong> <%= userDoc.email %></p>
+    <p><strong>Phone:</strong> <%= userDoc.phone %></p>
+    <p><strong>Address:</strong> <%= userDoc.address %></p>
+    <p><strong>Joined:</strong> <%= userDoc.createdAt.toDateString() %></p>
+    <p><strong>Last Updated:</strong> <%= userDoc.updatedAt.toDateString() %></p>
+
+    <div style="display:flex; gap:10px; margin-top:20px; flex-wrap:wrap;">
+      <form action="/admin/users/<%= userDoc._id %>/role" method="POST">
+        <button type="submit" class="btn" style="background-color:#ffa500;">
+          Make <%= userDoc.type === 'admin' ? 'Customer' : 'Admin' %>
+        </button>
+      </form>
+      <form action="/admin/users/<%= userDoc._id %>/delete" method="POST" onsubmit="return confirm('Delete this user permanently?');">
+        <button type="submit" class="btn" style="background-color:#d90429;">Delete User</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

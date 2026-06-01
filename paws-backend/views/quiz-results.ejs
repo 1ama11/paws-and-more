@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <h1>🐾 Your Top Matches</h1>
+    <p style="text-align:center; margin-bottom:24px;">
+        Based on your answers, here are the pets that suit you best!
+    </p>
+
+    <% if (matches.length === 0) { %>
+        <p style="text-align:center; color:var(--muted-text); margin-top:30px;">
+            No available pets found right now. Check back soon!
+        </p>
+    <% } else { %>
+        <div class="pet-grid">
+            <% matches.forEach(function(item) { %>
+            <div class="pet-card">
+                <img src="/images/<%= item.pet.imageUrl %>" alt="<%= item.pet.name %>">
+                <h3><%= item.pet.name %></h3>
+                <p><u><%= item.pet.breed %></u></p>
+                <p style="margin:10px 0;">
+                    <span style="
+                        display:inline-block;
+                        padding:4px 14px;
+                        border-radius:20px;
+                        font-weight:bold;
+                        font-size:0.9rem;
+                        background-color:<%= item.percentage >= 80 ? 'var(--success-color)' : item.percentage >= 60 ? 'var(--warning-color)' : 'var(--muted-text)' %>;
+                        color:#fff;
+                    ">
+                        <%= item.percentage %>% Match
+                    </span>
+                </p>
+                <a href="/pets/<%= item.pet.name %>" class="btn">View Details</a>
+            </div>
+            <% }) %>
+        </div>
+    <% } %>
+
+    <div style="text-align:center; margin-top:30px;">
+        <a href="/adoption/quiz" class="btn">Retake Quiz</a>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

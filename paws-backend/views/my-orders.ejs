@@ -1,0 +1,44 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <h1>My Orders</h1>
+
+    <% if (orders.length === 0) { %>
+        <p style="text-align:center; color:var(--muted-text); margin-top:30px;">
+            You haven't placed any orders yet.
+            <a href="/shop" class="btn" style="display:inline-block; margin-left:12px;">Start Shopping</a>
+        </p>
+    <% } else { %>
+        <% orders.forEach(function(order) { %>
+        <div class="pet-card" style="text-align:left; margin-bottom:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+                <h3 style="margin:0;">Order — <%= order.createdAt.toDateString() %></h3>
+                <% if (order.donated) { %>
+                    <span style="font-size:0.85rem; color:var(--success-color); font-weight:600;">+$1 donated to adoption 🐾</span>
+                <% } %>
+            </div>
+
+            <p><strong>Ship to:</strong> <%= order.fullName %>, <%= order.address %></p>
+
+            <ul style="list-style:none; padding:0; margin:10px 0;">
+                <% order.items.forEach(function(item) { %>
+                <li style="display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px solid var(--border-color);">
+                    <span><%= item.name %> <% if (item.qty > 1) { %><span style="color:var(--muted-text);">x<%= item.qty %></span><% } %></span>
+                    <span style="font-weight:600;">$<%= (item.price * item.qty).toFixed(2) %></span>
+                </li>
+                <% }) %>
+            </ul>
+
+            <p style="text-align:right; font-weight:700; font-size:1.1rem; color:var(--accent-color);">
+                Total: $<%= order.total.toFixed(2) %>
+            </p>
+        </div>
+        <% }) %>
+    <% } %>
+
+    <div style="text-align:center; margin-top:20px;">
+        <a href="/shop" class="btn">Continue Shopping</a>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

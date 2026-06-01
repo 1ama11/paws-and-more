@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1>All Orders</h1>
+
+    <% if (orders.length === 0) { %>
+        <p style="text-align:center; color:var(--muted-text); margin-top:20px;">No orders have been placed yet.</p>
+    <% } else { %>
+        <p style="color:var(--muted-text); margin-bottom:20px;"><%= orders.length %> order<%= orders.length !== 1 ? 's' : '' %> total</p>
+
+        <% orders.forEach(function(order) { %>
+        <div class="pet-card" style="margin-bottom:20px; text-align:left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+                <h3 style="margin:0;"><%= order.fullName %></h3>
+                <div style="font-size:0.85rem; color:var(--muted-text);">
+                    <%= order.createdAt.toDateString() %>
+                    <% if (order.donated) { %>
+                        &nbsp;| <span style="color:var(--success-color); font-weight:600;">+$1 donated 🐾</span>
+                    <% } %>
+                </div>
+            </div>
+
+            <p style="margin-bottom:6px;"><strong>Address:</strong> <%= order.address %></p>
+
+            <ul style="list-style:none; padding:0; margin:8px 0;">
+                <% order.items.forEach(function(item) { %>
+                <li style="display:flex; justify-content:space-between; padding:3px 0; border-bottom:1px solid var(--border-color); font-size:0.9rem;">
+                    <span><%= item.name %> <span style="color:var(--muted-text);">x<%= item.qty %></span></span>
+                    <span>$<%= (item.price * item.qty).toFixed(2) %></span>
+                </li>
+                <% }) %>
+            </ul>
+
+            <p style="text-align:right; font-weight:700; color:var(--accent-color); margin-top:8px;">
+                Total: $<%= order.total.toFixed(2) %>
+            </p>
+        </div>
+        <% }) %>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>
