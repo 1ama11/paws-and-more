@@ -160,14 +160,41 @@
     </div>
   </section>
 
-  <!-- NEWSLETTER -->
-  <section class="section section--green newsletter">
+
+ <!-- NEWSLETTER -->
+<section class="section section--light ">
+  <div class="section-header">
     <h2>Stay in the Loop 📬</h2>
     <p>Get exclusive deals, pet care tips, and new arrivals straight to your inbox.</p>
-    <div class="newsletter-form">
-      <input type="email" id="nl-email" placeholder="Your email address…" aria-label="Email address">
-      <button class="btn btn--primary" id="nl-btn" type="button">Subscribe</button>
-    </div>
-  </section>
+  </div>
+  <div class="newsletter-form">
+    <input type="email" id="subscribe-email" placeholder="Your email address..." class="newsletter-input">
+    <button onclick="subscribeEmail()" class="btn btn--primary">Subscribe</button>
+  </div>
+  <p id="subscribe-msg" style="margin-top:12px;font-weight:600;text-align:center;"></p>
+</section>
 
+<script>
+async function subscribeEmail() {
+  const email = document.getElementById('subscribe-email').value;
+  const msg = document.getElementById('subscribe-msg');
+   if (!email) { msg.textContent = 'Please enter your email!'; msg.style.color = 'red'; return; }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    msg.textContent = 'Please enter a valid email address!';
+    msg.style.color = 'red';
+    return;
+    }
+  const res = await fetch('/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  });
+  const data = await res.json();
+  msg.textContent = data.message;
+  msg.style.color = res.ok ? 'green' : 'red';
+  if (res.ok) document.getElementById('subscribe-email').value = '';
+}
+</script>
 <%- include('partials/footer') %>

@@ -49,8 +49,8 @@ app.use('/shop', productRoutes);
 app.use('/orders', orderRoutes);
 app.use('/admin', adminRoutes);
 app.use('/user', userRoutes);
-
-
+app.use('/contact', require('./routes/messageRoutes'));
+app.use('/subscribe', require('./routes/subscriberRoutes'));
 app.use(notFound);
 app.use(errorHandler);
 

@@ -52,12 +52,46 @@
       <div class="field-wrap">
         <textarea id="contact-message" placeholder="Your Message"></textarea>
       </div>
-
-      <button class="btn btn--primary btn--full" id="send-btn">Send Message</button>
-    </div>
-
+<button class="btn btn--primary btn--full" id="send-btn" onclick="sendMessage()">Send Message</button>  
+  </div>
   </section>
 
   <!-- FOOTER -->
+<p id="contact-msg" style="font-weight:600;text-align:center;margin-top:8px;"></p>
 
+<script>
+async function sendMessage() {
+  const name    = document.getElementById('contact-name').value;
+  const email   = document.getElementById('contact-email').value;
+  const message = document.getElementById('contact-message').value;
+  const msg     = document.getElementById('contact-msg');
+
+  if (!name || !email || !message) {
+    msg.textContent = 'Please fill in all fields!';
+    msg.style.color = 'red';
+    return;
+}
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if (!emailRegex.test(email)) {
+    msg.textContent = 'Please enter a valid email address!';
+    msg.style.color = 'red';
+    return;
+}
+
+  const res = await fetch('/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, message })
+  });
+  const data = await res.json();
+  msg.textContent = data.message;
+  msg.style.color = res.ok ? 'green' : 'red';
+  if (res.ok) {
+    document.getElementById('contact-name').value = '';
+    document.getElementById('contact-email').value = '';
+    document.getElementById('contact-message').value = '';
+  }
+}
+</script>
 <%- include('partials/footer') %>
