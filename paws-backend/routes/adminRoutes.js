@@ -34,7 +34,7 @@ router.post('/pets/toggle/:id', togglePetAvailability);
 router.get('/applications', getApplications);
 router.post('/applications/:id', updateApplicationStatus);
 
-const adminUser = require('../controllers/adminUserController');
+const adminUser = require('../controllers/AdminUserController');
 router.get('/users',                adminUser.listUsers);
 router.get('/users/:id',            adminUser.viewUser);
 router.post('/users/:id/role',      adminUser.toggleRole);
