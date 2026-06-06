@@ -12,8 +12,13 @@
             <p><u><%= pet.breed %></u></p>
             <p><%= pet.isAvailable ? 'Available' : 'Adopted' %></p>
 
-            <div style="display:flex; gap:10px; margin-top:10px;">
+            <div style="display:flex; gap:10px; margin-top:10px; flex-wrap:wrap;">
                 <a href="/admin/pets/edit/<%= pet._id %>" class="btn">Edit</a>
+                <% if (!pet.isAvailable) { %>
+                <form action="/admin/pets/toggle/<%= pet._id %>" method="POST">
+                    <button type="submit" class="btn" style="background-color:#2d8a00;">Mark Available</button>
+                </form>
+                <% } %>
                 <form action="/admin/pets/delete/<%= pet._id %>" method="POST">
                     <button type="submit" class="btn" style="background-color:#d90429;">Delete</button>
                 </form>

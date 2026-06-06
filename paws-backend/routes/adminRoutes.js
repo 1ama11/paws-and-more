@@ -12,7 +12,8 @@ const {
     editPet,
     deletePet,
     getApplications,
-    updateApplicationStatus
+    updateApplicationStatus,
+    togglePetAvailability
 } = require('../controllers/adminController');
 
 router.use(requireAdmin);
@@ -27,6 +28,7 @@ router.post('/pets/add', upload.single('image'), addPet);
 router.get('/pets/edit/:id', getEditPet);
 router.post('/pets/edit/:id', upload.single('image'), editPet);
 router.post('/pets/delete/:id', deletePet);
+router.post('/pets/toggle/:id', togglePetAvailability);
 
 // applications
 router.get('/applications', getApplications);

@@ -138,12 +138,26 @@ const updateApplicationStatus = async (req, res, next) => {
 
         if (!application) return res.redirect('/admin/applications');
 
-        // if rejected, make the pet available again
-        if (req.body.status === 'rejected') {
-            await Pet.findOneAndUpdate({ name: application.petName }, { isAvailable: true });
+        if (req.body.status === 'approved') {
+            await Pet.findOneAndUpdate({ name: application.petName }, { isAvailable: false });
+            await Application.updateMany(
+                { petName: application.petName, status: 'pending', _id: { $ne: application._id } },
+                { status: 'rejected' }
+            );
         }
 
         res.redirect('/admin/applications');
+    } catch (err) {
+        next(err);
+    }
+};
+
+const togglePetAvailability = async (req, res, next) => {
+    try {
+        const pet = await Pet.findById(req.params.id);
+        if (!pet) return res.redirect('/admin/pets');
+        await Pet.findByIdAndUpdate(req.params.id, { isAvailable: !pet.isAvailable });
+        res.redirect('/admin/pets');
     } catch (err) {
         next(err);
     }
@@ -159,5 +173,6 @@ module.exports = {
     editPet,
     deletePet,
     getApplications,
-    updateApplicationStatus
+    updateApplicationStatus,
+    togglePetAvailability
 };
