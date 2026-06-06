@@ -4,7 +4,7 @@ const Pet = require('../models/Pet');
 const showForm = async (req, res, next) => {
     try {
         const petName = req.query.pet || '';
-        res.render('adoption-form', { petName, title: 'Adoption Application' });
+        res.render('adoption-form', { petName, title: 'Adoption Application', extraCss: ['adoption.css'] });
     } catch (err) {
         next(err);
     }
