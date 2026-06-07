@@ -62,9 +62,9 @@ function renderProducts(productsToRender) {
     });
 }
 
-function filterProducts(filterType) {
-    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+function filterProducts(filterType, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
     let filtered = [];
     if (filterType === 'all') {
@@ -75,10 +75,8 @@ function filterProducts(filterType) {
         const categoryMap = { dogs: 'dog', cats: 'cat', other: 'other' };
         filtered = products.filter(p => p.category === (categoryMap[filterType] || filterType));
     }
-
     renderProducts(filtered);
 }
-
 function addToCart(productId) {
     const product = products.find(p => p._id === productId);
     const cart = JSON.parse(localStorage.getItem('pawsCart') || '[]');
@@ -97,7 +95,8 @@ function addToCart(productId) {
     if (btn) {
         const original = btn.textContent;
         btn.textContent = '✓ Added!';
-        btn.style.backgroundColor = 'var(--success-color)';
+        btn.style.backgroundColor = '#c4a265';
+        btn.style.color = 'white';
         btn.disabled = true;
         setTimeout(() => {
             btn.textContent = original;
@@ -198,27 +197,28 @@ async function processCheckout(event) {
 
         const data = await response.json();
 
-        if (response.ok) {
-            localStorage.removeItem('pawsCart');
-            updateCartBadge();
-            form.reset();
-
-            if (btn) {
-                btn.textContent = donated ? '✓ Order placed! Thanks for your donation 🐾' : '✓ Order placed! Thank you!';
-                btn.style.backgroundColor = 'var(--success-color)';
-                btn.disabled = true;
-                setTimeout(() => {
-                    btn.textContent = 'Place Order';
-                    btn.style.backgroundColor = '';
-                    btn.disabled = false;
-                    showView('shop-view');
-                }, 2500);
-            }
-        } else {
+       if (response.ok) {
+    localStorage.removeItem('pawsCart');
+    updateCartBadge();
+    form.reset();
+    showOrderPopup();
+}
+        else {
             alert('Failed to place order: ' + data.message);
         }
 
     } catch (error) {
         alert('Something went wrong. Please try again.');
     }
+}
+
+function showOrderPopup() {
+    const popup = document.getElementById('order-popup');
+    popup.style.display = 'flex';
+}
+
+function closeOrderPopup() {
+    const popup = document.getElementById('order-popup');
+    popup.style.display = 'none';
+    showView('shop-view');
 }

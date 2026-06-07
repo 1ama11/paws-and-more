@@ -28,11 +28,11 @@
     </div>
 
     <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterProducts('all')">All</button>
-      <button class="filter-btn" onclick="filterProducts('dogs')">🐕 Dogs</button>
-      <button class="filter-btn" onclick="filterProducts('cats')">🐈 Cats</button>
-      <button class="filter-btn" onclick="filterProducts('other')">🐹 Other Pets</button>
-      <button class="filter-btn" onclick="filterProducts('best-selling')">⭐ Best Selling</button>
+      <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('dogs',this)">🐕 Dogs</button>
+      <button class="filter-btn" onclick="filterProducts('cats',this)">🐈 Cats</button>
+      <button class="filter-btn" onclick="filterProducts('other',this)">🐹 Other Pets</button>
+      <button class="filter-btn" onclick="filterProducts('best-selling',this)">⭐ Best Selling</button>
     </div>
 
     <div id="product-grid" class="card-container"></div>
@@ -53,7 +53,7 @@
           Total: $<span id="cart-total">0.00</span>
         </p>
         <div style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;">
-          <button class="btn" style="background-color:var(--muted-text);" onclick="showView('shop-view')">← Keep Shopping</button>
+          <button class="btn" style="background-color:var(--muted-text);color:black;" onclick="showView('shop-view')">← Keep Shopping</button>
           <button class="btn" onclick="showView('checkout-view')">Proceed to Checkout</button>
         </div>
       </div>
@@ -138,5 +138,13 @@
     else if (hash === '#checkout') showView('checkout-view');
   });
   </script>
+  <!-- ORDER SUCCESS POPUP -->
+<div id="order-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;justify-content:center;align-items:center;">
+  <div style="background:var(--card-bg);border:3px solid #5c4a1e;border-radius:16px;padding:40px;text-align:center;max-width:400px;width:90%;">
+    <h2 style="margin-bottom:12px;">Order Placed! 🐾</h2>
+    <p style="margin-bottom:24px;">Thank you! Your order has been received and will be delivered soon.</p>
+    <button class="btn" onclick="closeOrderPopup()">Back to Shop</button>
+  </div>
+</div>
 
 <%- include('partials/footer', { extraJs: ['shop.js'] }) %>

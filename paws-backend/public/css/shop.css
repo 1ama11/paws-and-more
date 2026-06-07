@@ -22,12 +22,12 @@
     transition: background 0.2s, color 0.2s;
 }
 
+
 .filter-btn:hover,
 .filter-btn.active {
-    background: var(--accent-color);
-    color: var(--light-color);
+    background: #5c4a1e;
+    color: white;
 }
-
 .product-card {
     background: var(--card-bg);
     border: 1px solid var(--accent-color);
@@ -78,4 +78,56 @@
     .product-card { width: 100%; }
     .filter-bar   { gap: 8px; }
     .filter-btn   { padding: 6px 14px; font-size: 0.85rem; }
+}
+
+.product-card .btn {
+    background: #5c4a1e;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    margin-top: auto;
+}
+
+.product-card .btn:hover {
+    background: #ac8b3f;
+}
+
+.product-card .btn:active {
+    background: #c4a265;
+    color: white;
+}
+
+.btn {
+    background: #5c4a1e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #a8822a;
+}
+
+.btn:active {
+    background: #c4a265;
+}
+
+.btn[style*="muted-text"] {
+    transition: background 0.3s ease;
+}
+
+.btn[style*="muted-text"]:hover {
+    background-color: #b3ab9b !important;
+}
+
+.btn[style*="muted-text"]:active {
+    background-color: #c4a265 !important;
 }
