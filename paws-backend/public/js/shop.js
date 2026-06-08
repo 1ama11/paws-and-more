@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash;
     if (hash === '#cart')         showView('cart-view');
     else if (hash === '#checkout') showView('checkout-view');
+    else if (hash === '#shop') showView('shop-view');
 });
 
 // BUG 1: handle hash changes from nav-cart click while already on /shop
@@ -37,6 +38,7 @@ window.addEventListener('hashchange', () => {
     if (hash === '#cart')         showView('cart-view');
     else if (hash === '#checkout') showView('checkout-view');
     else if (!hash)               showView('shop-view');
+    else if (!hash)showView('shop-view');
 });
 
 function renderProducts(productsToRender) {
