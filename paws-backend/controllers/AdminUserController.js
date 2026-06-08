@@ -4,7 +4,7 @@ const User = require('../models/User');
 exports.listUsers = async (req, res, next) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const perPage = 10;
+    const perPage = 5;
     const q = req.query.q || '';
 
     const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
